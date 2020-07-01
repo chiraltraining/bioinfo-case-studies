@@ -2,7 +2,7 @@
 - file: docs/index
   sections:
     - file: docs/QuickPython
+    - file: docs/Working_with_Sequence_Data[Text Format]
+    - file: docs/Working_with_Sequence_Data[FASTA]
+    - file: docs/Working_with_Sequence_Data[FASTQ]
     - file: docs/Introduction_to_Data_Visualization_with_Python
-    - file: docs/DNA_Sequence_Statistics-1
-    - file: docs/DNA_Sequence_Statistics-2
-    - file: docs/Dengue_sequence_statistics.

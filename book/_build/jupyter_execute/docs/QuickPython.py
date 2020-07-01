@@ -1,8 +1,4 @@
-<h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Python-Quick-Guide" data-toc-modified-id="Python-Quick-Guide-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Python Quick Guide</a></span><ul class="toc-item"><li><span><a href="#Printing-Message" data-toc-modified-id="Printing-Message-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Printing Message</a></span></li><li><span><a href="#Variables" data-toc-modified-id="Variables-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Variables</a></span></li><li><span><a href="#Reserved-Keywords-=>-Don't-use-as-a-variable-name" data-toc-modified-id="Reserved-Keywords-=>-Don't-use-as-a-variable-name-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Reserved Keywords =&gt; Don't use as a variable name</a></span></li><li><span><a href="#Imports" data-toc-modified-id="Imports-1.4"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Data-Types" data-toc-modified-id="Data-Types-1.5"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Data Types</a></span></li><li><span><a href="#Data-Type-Conversion" data-toc-modified-id="Data-Type-Conversion-1.6"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Data Type Conversion</a></span></li><li><span><a href="#3.-Math" data-toc-modified-id="3.-Math-1.7"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>3. Math</a></span></li><li><span><a href="#Comparisons-and-Boolean-Operations" data-toc-modified-id="Comparisons-and-Boolean-Operations-1.8"><span class="toc-item-num">1.8&nbsp;&nbsp;</span>Comparisons and Boolean Operations</a></span></li><li><span><a href="#Conditional-Statements" data-toc-modified-id="Conditional-Statements-1.9"><span class="toc-item-num">1.9&nbsp;&nbsp;</span>Conditional Statements</a></span></li><li><span><a href="#Lists" data-toc-modified-id="Lists-1.10"><span class="toc-item-num">1.10&nbsp;&nbsp;</span>Lists</a></span></li><li><span><a href="#Tuples" data-toc-modified-id="Tuples-1.11"><span class="toc-item-num">1.11&nbsp;&nbsp;</span>Tuples</a></span></li><li><span><a href="#Strings" data-toc-modified-id="Strings-1.12"><span class="toc-item-num">1.12&nbsp;&nbsp;</span>Strings</a></span></li><li><span><a href="#Dictionaries" data-toc-modified-id="Dictionaries-1.13"><span class="toc-item-num">1.13&nbsp;&nbsp;</span>Dictionaries</a></span></li><li><span><a href="#Sets" data-toc-modified-id="Sets-1.14"><span class="toc-item-num">1.14&nbsp;&nbsp;</span>Sets</a></span></li><li><span><a href="#Defining-Functions" data-toc-modified-id="Defining-Functions-1.15"><span class="toc-item-num">1.15&nbsp;&nbsp;</span>Defining Functions</a></span></li><li><span><a href="#Anonymous-(Lambda)-Functions" data-toc-modified-id="Anonymous-(Lambda)-Functions-1.16"><span class="toc-item-num">1.16&nbsp;&nbsp;</span>Anonymous (Lambda) Functions</a></span></li><li><span><a href="#For-Loops-and-While-Loops" data-toc-modified-id="For-Loops-and-While-Loops-1.17"><span class="toc-item-num">1.17&nbsp;&nbsp;</span>For Loops and While Loops</a></span></li><li><span><a href="#Comprehensions" data-toc-modified-id="Comprehensions-1.18"><span class="toc-item-num">1.18&nbsp;&nbsp;</span>Comprehensions</a></span></li><li><span><a href="#Map-and-Filter" data-toc-modified-id="Map-and-Filter-1.19"><span class="toc-item-num">1.19&nbsp;&nbsp;</span>Map and Filter</a></span></li><li><span><a href="#Randomness" data-toc-modified-id="Randomness-1.20"><span class="toc-item-num">1.20&nbsp;&nbsp;</span>Randomness</a></span></li><li><span><a href="#Working-with-Files" data-toc-modified-id="Working-with-Files-1.21"><span class="toc-item-num">1.21&nbsp;&nbsp;</span>Working with Files</a></span></li><li><span><a href="#Common-Mistakes-and-Errors" data-toc-modified-id="Common-Mistakes-and-Errors-1.22"><span class="toc-item-num">1.22&nbsp;&nbsp;</span>Common Mistakes and Errors</a></span></li><li><span><a href="#Resources" data-toc-modified-id="Resources-1.23"><span class="toc-item-num">1.23&nbsp;&nbsp;</span>Resources</a></span></li></ul></li></ul></div>
-
-# Python Quick Guide
-[Datastics Lab](https://github.com/datasticslab/ISCB) | Created by [Jubayer Hossain](https://github.com/jubayer-hossain)
+# Quick Introduction to Python
 
 ## Printing Message
 
@@ -27,12 +23,10 @@ print(b)
 name = "Datastics Lab"
 print(name)
 
-## Reserved Keywords => Don't use as a variable name 
+## Reserved Keywords
 
 import keyword
 print(keyword.kwlist)
-
-[<a href="#Python-Quick-Guide">Back to top</a>]
 
 ## Imports
 
@@ -58,8 +52,6 @@ import numpy as np
 
 # show all functions in math module
 print(dir(math))
-
-[<a href="#Python-Quick-Guide">Back to top</a>]
 
 ## Data Types
 
@@ -109,8 +101,6 @@ bool('two')
 
 bool([2])
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Data Type Conversion
 
 # float to integer  
@@ -137,8 +127,6 @@ ord(s)
 i = 97 
 chr(i)
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## 3. Math
 
 10 + 4
@@ -163,8 +151,6 @@ from __future__ import division
 10 / 4     # true division
 
 10 // 4    # floor division
-
-[<a href="#Python-Quick-Guide">Back to top</a>]
 
 ## Comparisons and Boolean Operations
 
@@ -192,8 +178,6 @@ not False
 
 False or not False and True     # evaluation order: not, and, or
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Conditional Statements
 
 # if statement
@@ -219,8 +203,6 @@ if x > 0: print('positive')
 
 # single-line if/else statement (sometimes discouraged), known as a 'ternary operator'
 'positive' if x > 0 else 'zero or negative'
-
-[<a href="#Python-Quick-Guide">Back to top</a>]
 
 ## Lists
 
@@ -361,8 +343,6 @@ num == same_num    # checks whether they have the same contents
 
 num == new_num
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Tuples
 
 - **Tuple properties:** ordered, iterable, immutable, can contain multiple data types
@@ -413,8 +393,6 @@ bart = ('male', 10, 'simpson')    # create a tuple
 print(sex)
 print(age)
 print(surname)
-
-[<a href="#Python-Quick-Guide">Back to top</a>]
 
 ## Strings
 
@@ -514,8 +492,6 @@ print('first line\nsecond line')
 # raw strings treat backslashes as literal characters
 print(r'first line\nfirst line')
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Dictionaries
 
 - **Dictionary properties:** unordered, iterable, mutable, can contain multiple data types
@@ -612,8 +588,6 @@ family
 
 'youngest child is %(baby)s' % family
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Sets
 
 - **Set properties:** unordered, iterable, mutable, can contain multiple data types
@@ -684,8 +658,6 @@ languages
 **Get a sorted list of unique elements from a list:**
 
 sorted(set([9, 0, 2, 1, 0]))
-
-[<a href="#Python-Quick-Guide">Back to top</a>]
 
 ## Defining Functions
 
@@ -768,8 +740,6 @@ min_num, max_num = min_max(nums)
 print(min_num)
 print(max_num)
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Anonymous (Lambda) Functions
 
 - Primarily used to temporarily define a function for use by another function
@@ -847,8 +817,6 @@ while count < 5:
     print('This will print 5 times')
     count += 1    # equivalent to 'count = count + 1'
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Comprehensions
 
 **List comprehension:**
@@ -917,8 +885,6 @@ fruit_lengths
 fruit_indices = {fruit:index for index, fruit in enumerate(fruits)}
 fruit_indices
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Map and Filter
 
 **`map` applies a function to every element of a sequence and returns a list (Python 2) or iterator (Python 3):**
@@ -977,8 +943,6 @@ random.choice(["H", "T"])
 # randomly choice: random.choice([sequence]) 
 random.choice(["H", "T"])
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Working with Files 
 
 # store file in filename variable 
@@ -1026,8 +990,6 @@ def readFile(inputfile):
 filename = "./data/input.txt"
 readFile(filename)
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
 ## Common Mistakes and Errors
 
 # Create a list 
@@ -1066,9 +1028,7 @@ def rsum(n):
         return rsum
 rsum(12)
 
-[<a href="#Python-Quick-Guide">Back to top</a>]
-
-## Resources
+## References and Further Reading
 - http://www.dataschool.io/
 - https://www.python.org/doc/essays/blurb/
 - https://dev.to/duomly/10-reasons-why-learning-python-is-still-a-great-idea-5abh

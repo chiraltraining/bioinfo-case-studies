@@ -1,9 +1,4 @@
-![matplotlib](../img/logo.png)
 # An Introduction to Data Visualization with Matplotlib
-- Official Documentation- https://matplotlib.org/index.html
-- Scipy-2019 Tutorial-https://github.com/story645/mpl_tutorial
-- NBViewer: https://nbviewer.jupyter.org/github/matplotlib/GettingStarted/tree/master/notebooks/
-- Format String: https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html
 
 ## Why is data visualization important?
 > "A picture is worth a thousand words"
@@ -29,7 +24,7 @@ The figure and axes obtained using subplots() can be used for modification. Prop
 
 ## Anatomy of a Figure 
 A matplotlib visualization is a figure onto which is attached one or more axes. Each axes has a horizontal (x) axis and vertical (y) axis, and the data is encoded using color and glyphs such as markers (for example circles) or lines or polygons (called patches). The figure below annotates these parts of a visualization and was created by Nicolas P. Rougier using matplotlib. The source code can be found in the [matplotlib documentation](https://matplotlib.org/gallery/showcase/anatomy.html#sphx-glr-gallery-showcase-anatomy-py).
-![anatomy](../img/mpl_anatomy.png)
+![anatomy](./img/mpl_anatomy.png)
 
 ## Basic Charts / Graphs 
 - Line Plot 
@@ -281,7 +276,7 @@ plt.show()
 - Histogram: a graphical display of data using bars of different heights.
 - The height of each bar shows how many fall into each range.
 - And you decide what ranges to use!
-![hist](../img/histogram.gif)
+![hist](./img/histogram.gif)
 
 ## Create Histogram
 
@@ -367,12 +362,12 @@ plt.show()
 - Bar Graphs are good when your data is in categories (such as "Comedy", "Drama", etc).
 - But when you have continuous data (such as a person's height) then use a Histogram.
 - It is best to leave gaps between the bars of a Bar Graph, so it doesn't look like a Histogram.
-![hist](../img/bar-chart-vs-histogram.svg)
+![hist](./img/bar-chart-vs-histogram.svg)
 
 ## Pie Chart
 - Pie Chart: a special chart that uses "pie slices" to show relative sizes of data.
 - It is a really good way to show relative sizes: it is easy to see which movie types are most liked, and which are least liked, at a glance.
-![pie](../img/pie-chart-movies.svg)
+![pie](./img/pie-chart-movies.svg)
 
 
 ## Create Simple Pie Chart 
@@ -414,3 +409,7 @@ plt.show()
 - https://realpython.com/python-matplotlib-guide/
 - https://www.youtube.com/playlist?list=PL-osiE80TeTvipOqomVEeZ1HRrcEvtZB_
 - https://www.tutorialspoint.com/matplotlib/index.htm
+- Official Documentation- https://matplotlib.org/index.html
+- Scipy-2019 Tutorial-https://github.com/story645/mpl_tutorial
+- NBViewer: https://nbviewer.jupyter.org/github/matplotlib/GettingStarted/tree/master/notebooks/
+- Format String: https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html
