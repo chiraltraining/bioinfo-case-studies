@@ -352,3 +352,6 @@ icon.
 Save it somewhere, navigate to it from the Jupyter dashboard and then
 run as discussed above.
 
+
+## Jupyter Notebooks in Cloud
+There are may ways to share 

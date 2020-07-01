@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/home/jubayer/anaconda3/envs/book-template/lib/python3.7/site-packages/jupyter_cache/executors/basic.py", line 157, in execute
+    executenb(nb_bundle.nb, cwd=tmpdirname)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
+    return ep.preprocess(nb, resources, km=km)[0]
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 448, in preprocess_cell
+    raise CellExecutionError.from_cell_and_msg(cell, out)
+nbconvert.preprocessors.execute.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# for sequence analysis 
+from collections import Counter
+import Bio 
+from skbio import Sequence
+from skbio.sequence.distance import hamming
+from Bio import SeqIO
+import pandas as pd
+import numpy as np
+
+# for data visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style('whitegrid')
+
+# set figuresize and fontsize
+plt.rcParams['figure.figsize'] = (10,6)
+plt.rcParams['font.size'] = 14
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-1-b55d58fbd860>[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m [0;32mfrom[0m [0mcollections[0m [0;32mimport[0m [0mCounter[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mimport[0m [0mBio[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mfrom[0m [0mskbio[0m [0;32mimport[0m [0mSequence[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0;32mfrom[0m [0mskbio[0m[0;34m.[0m[0msequence[0m[0;34m.[0m[0mdistance[0m [0;32mimport[0m [0mhamming[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;32mfrom[0m [0mBio[0m [0;32mimport[0m [0mSeqIO[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'skbio'
+ModuleNotFoundError: No module named 'skbio'
+

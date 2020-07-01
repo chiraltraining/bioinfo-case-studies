@@ -1,4 +1,4 @@
-# Scientific Python QuickStart 
+# Bioinformatics Case Studies 
 
 This is a short sequence of lectures on Python programming for scientific
 work, written by [Thomas J.  Sargent](http://www.tomsargent.com/) and [John
@@ -18,10 +18,8 @@ These lectures are a mini-version of a [longer
 series](https://executablebookproject.github.io/quantecon-example/docs/index.html)
 of lectures, also built using Jupyter Book 2.0.  That series contains more
 features and applications but also requires more libraries and takes longer to
-run.  
+run.
 
 Both lecture series are taken from a [more complete set of
 lectures](https://python.quantecon.org) on open source computing hosted by
 [QuantEcon](https://quantecon.org).
-
-

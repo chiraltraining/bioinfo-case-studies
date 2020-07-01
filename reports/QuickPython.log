@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/jubayer/anaconda3/envs/book-template/lib/python3.7/site-packages/jupyter_cache/executors/basic.py", line 157, in execute
+    executenb(nb_bundle.nb, cwd=tmpdirname)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
+    return ep.preprocess(nb, resources, km=km)[0]
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 448, in preprocess_cell
+    raise CellExecutionError.from_cell_and_msg(cell, out)
+nbconvert.preprocessors.execute.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Python 2 only: use xrange to create a sequence rather than a list (saves memory)
+xrange(100, 100000, 5)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-205-fef75cee161d>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# Python 2 only: use xrange to create a sequence rather than a list (saves memory)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mxrange[0m[0;34m([0m[0;36m100[0m[0;34m,[0m [0;36m100000[0m[0;34m,[0m [0;36m5[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mNameError[0m: name 'xrange' is not defined
+NameError: name 'xrange' is not defined
+

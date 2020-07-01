@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>DNA Translation ⇒ DNA to Protein &#8212; Bioinformatics Case Studies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Bioinformatics Case Studies</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="QuickPython.html">Python Quick Guide</a>
+  </li>
+  <li class="">
+    <a href="Introduction_to_Data_Visualization_with_Python.html">An Introduction to Data Visualization with Matplotlib</a>
+  </li>
+  <li class="">
+    <a href="DNA_Sequence_Statistics-1.html">DNA Sequence Statistics-1</a>
+  </li>
+  <li class="">
+    <a href="DNA_Sequence_Statistics-2.html">DNA Sequence Statistics-2</a>
+  </li>
+</ul>
+</nav>
+<p class="navbar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/docs/DNA Translation .ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/hdsnotes/bioinfo-case-studies/master?urlpath=tree/book/docs/DNA Translation .ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#tasks" class="nav-link">Tasks</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#task-1-manually-download-sequence-file" class="nav-link">Task-1: Manually Download Sequence File</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#task-2-import-dna-sequence-data" class="nav-link">Task-2: Import DNA Sequence Data</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#task-3-create-an-algorithm" class="nav-link">Task-3: Create an Algorithm</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#create-a-function-to-translate-dna-sequence-into-protein" class="nav-link">Create a function to translate DNA sequence into protein.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#create-a-function-to-read-sequence-file" class="nav-link">Create a function to read sequence file</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#task-4-comparison" class="nav-link">Task-4: Comparison</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="dna-translation-dna-to-protein">
+<h1>DNA Translation  ⇒ DNA to Protein<a class="headerlink" href="#dna-translation-dna-to-protein" title="Permalink to this headline">¶</a></h1>
+<p><strong>Translation Theory : DNA ⇒ RNA ⇒ Protein</strong></p>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Manually download DNA and Protein(to check our solution) sequence from NCBI.</p></li>
+<li><p>Import DNA data into Python</p></li>
+<li><p>Create an algorithm for DNA translation</p></li>
+<li><p>Check if translation matches your dowloaded protein sequence</p></li>
+</ol>
+</div>
+<div class="section" id="task-1-manually-download-sequence-file">
+<h2>Task-1: Manually Download Sequence File<a class="headerlink" href="#task-1-manually-download-sequence-file" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Go to NCBI and select Nucleotide database</p></li>
+<li><p>Enter the accession code, <strong>NM_207618.2</strong></p></li>
+<li><p>Click on <strong>FASTA</strong></p></li>
+<li><p>Copy and paste(without sequence info) the sequence into a text editor.</p></li>
+<li><p>Save both sequence as text file(.txt) into a folder called <strong>data</strong></p></li>
+</ul>
+</div>
+<div class="section" id="task-2-import-dna-sequence-data">
+<h2>Task-2: Import DNA Sequence Data<a class="headerlink" href="#task-2-import-dna-sequence-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inputfile</span> <span class="o">=</span> <span class="s2">&quot;../data/dna.txt&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the DNA sequence file </span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># To see the DNA sequence </span>
+<span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;GGTCAGAAAAAGCCCTCTCCATGTCTACTCACGATACATCCCTGAAAACCACTGAGGAAGTGGCTTTTCA\nGATCATCTTGCTTTGCCAGTTTGGGGTTGGGACTTTTGCCAATGTATTTCTCTTTGTCTATAATTTCTCT\nCCAATCTCGACTGGTTCTAAACAGAGGCCCAGACAAGTGATTTTAAGACACATGGCTGTGGCCAATGCCT\nTAACTCTCTTCCTCACTATATTTCCAAACAACATGATGACTTTTGCTCCAATTATTCCTCAAACTGACCT\nCAAATGTAAATTAGAATTCTTCACTCGCCTCGTGGCAAGAAGCACAAACTTGTGTTCAACTTGTGTTCTG\nAGTATCCATCAGTTTGTCACACTTGTTCCTGTTAATTCAGGTAAAGGAATACTCAGAGCAAGTGTCACAA\nACATGGCAAGTTATTCTTGTTACAGTTGTTGGTTCTTCAGTGTCTTAAATAACATCTACATTCCAATTAA\nGGTCACTGGTCCACAGTTAACAGACAATAACAATAACTCTAAAAGCAAGTTGTTCTGTTCCACTTCTGAT\nTTCAGTGTAGGCATTGTCTTCTTGAGGTTTGCCCATGATGCCACATTCATGAGCATCATGGTCTGGACCA\nGTGTCTCCATGGTACTTCTCCTCCATAGACATTGTCAGAGAATGCAGTACATATTCACTCTCAATCAGGA\nCCCCAGGGGCCAAGCAGAGACCACAGCAACCCATACTATCCTGATGCTGGTAGTCACATTTGTTGGCTTT\nTATCTTCTAAGTCTTATTTGTATCATCTTTTACACCTATTTTATATATTCTCATCATTCCCTGAGGCATT\nGCAATGACATTTTGGTTTCGGGTTTCCCTACAATTTCTCCTTTACTGTTGACCTTCAGAGACCCTAAGGG\nTCCTTGTTCTGTGTTCTTCAACTGTTGAAAGCCAGAGTCACTAAAAATGCCAAACACAGAAGACAGCTTT\nGCTAATACCATTAAATACTTTATTCCATAAATATGTTTTTAAAAGCTTGTATGAACAAGGTATGGTGCTC\nACTGCTATACTTATAAAAGAGTAAGGTTATAATCACTTGTTGATATGAAAAGATTTCTGGTTGGAATCTG\nATTGAAACAGTGAGTTATTCACCACCCTCCATTCTCT\n\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check length of DNA seq.</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>1175
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>The sequence length is not correct! the original size of this sequence is 1157. The 18 characters are the special characters like <strong>\n</strong>(new line), <strong>\r</strong>(tab). The special characters affect the sequence quality and increase the size of this sequence. So, we have to process/clean this sequence file.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the DNA sequence </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>GGTCAGAAAAAGCCCTCTCCATGTCTACTCACGATACATCCCTGAAAACCACTGAGGAAGTGGCTTTTCA
+GATCATCTTGCTTTGCCAGTTTGGGGTTGGGACTTTTGCCAATGTATTTCTCTTTGTCTATAATTTCTCT
+CCAATCTCGACTGGTTCTAAACAGAGGCCCAGACAAGTGATTTTAAGACACATGGCTGTGGCCAATGCCT
+TAACTCTCTTCCTCACTATATTTCCAAACAACATGATGACTTTTGCTCCAATTATTCCTCAAACTGACCT
+CAAATGTAAATTAGAATTCTTCACTCGCCTCGTGGCAAGAAGCACAAACTTGTGTTCAACTTGTGTTCTG
+AGTATCCATCAGTTTGTCACACTTGTTCCTGTTAATTCAGGTAAAGGAATACTCAGAGCAAGTGTCACAA
+ACATGGCAAGTTATTCTTGTTACAGTTGTTGGTTCTTCAGTGTCTTAAATAACATCTACATTCCAATTAA
+GGTCACTGGTCCACAGTTAACAGACAATAACAATAACTCTAAAAGCAAGTTGTTCTGTTCCACTTCTGAT
+TTCAGTGTAGGCATTGTCTTCTTGAGGTTTGCCCATGATGCCACATTCATGAGCATCATGGTCTGGACCA
+GTGTCTCCATGGTACTTCTCCTCCATAGACATTGTCAGAGAATGCAGTACATATTCACTCTCAATCAGGA
+CCCCAGGGGCCAAGCAGAGACCACAGCAACCCATACTATCCTGATGCTGGTAGTCACATTTGTTGGCTTT
+TATCTTCTAAGTCTTATTTGTATCATCTTTTACACCTATTTTATATATTCTCATCATTCCCTGAGGCATT
+GCAATGACATTTTGGTTTCGGGTTTCCCTACAATTTCTCCTTTACTGTTGACCTTCAGAGACCCTAAGGG
+TCCTTGTTCTGTGTTCTTCAACTGTTGAAAGCCAGAGTCACTAAAAATGCCAAACACAGAAGACAGCTTT
+GCTAATACCATTAAATACTTTATTCCATAAATATGTTTTTAAAAGCTTGTATGAACAAGGTATGGTGCTC
+ACTGCTATACTTATAAAAGAGTAAGGTTATAATCACTTGTTGATATGAAAAGATTTCTGGTTGGAATCTG
+ATTGAAACAGTGAGTTATTCACCACCCTCCATTCTCT
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># New lines replace with empty space to remove the extra characters from sequence file  </span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;GGTCAGAAAAAGCCCTCTCCATGTCTACTCACGATACATCCCTGAAAACCACTGAGGAAGTGGCTTTTCAGATCATCTTGCTTTGCCAGTTTGGGGTTGGGACTTTTGCCAATGTATTTCTCTTTGTCTATAATTTCTCTCCAATCTCGACTGGTTCTAAACAGAGGCCCAGACAAGTGATTTTAAGACACATGGCTGTGGCCAATGCCTTAACTCTCTTCCTCACTATATTTCCAAACAACATGATGACTTTTGCTCCAATTATTCCTCAAACTGACCTCAAATGTAAATTAGAATTCTTCACTCGCCTCGTGGCAAGAAGCACAAACTTGTGTTCAACTTGTGTTCTGAGTATCCATCAGTTTGTCACACTTGTTCCTGTTAATTCAGGTAAAGGAATACTCAGAGCAAGTGTCACAAACATGGCAAGTTATTCTTGTTACAGTTGTTGGTTCTTCAGTGTCTTAAATAACATCTACATTCCAATTAAGGTCACTGGTCCACAGTTAACAGACAATAACAATAACTCTAAAAGCAAGTTGTTCTGTTCCACTTCTGATTTCAGTGTAGGCATTGTCTTCTTGAGGTTTGCCCATGATGCCACATTCATGAGCATCATGGTCTGGACCAGTGTCTCCATGGTACTTCTCCTCCATAGACATTGTCAGAGAATGCAGTACATATTCACTCTCAATCAGGACCCCAGGGGCCAAGCAGAGACCACAGCAACCCATACTATCCTGATGCTGGTAGTCACATTTGTTGGCTTTTATCTTCTAAGTCTTATTTGTATCATCTTTTACACCTATTTTATATATTCTCATCATTCCCTGAGGCATTGCAATGACATTTTGGTTTCGGGTTTCCCTACAATTTCTCCTTTACTGTTGACCTTCAGAGACCCTAAGGGTCCTTGTTCTGTGTTCTTCAACTGTTGAAAGCCAGAGTCACTAAAAATGCCAAACACAGAAGACAGCTTTGCTAATACCATTAAATACTTTATTCCATAAATATGTTTTTAAAAGCTTGTATGAACAAGGTATGGTGCTCACTGCTATACTTATAAAAGAGTAAGGTTATAATCACTTGTTGATATGAAAAGATTTCTGGTTGGAATCTGATTGAAACAGTGAGTTATTCACCACCCTCCATTCTCT&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check sequence length again! </span>
+<span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>1157
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s correct! same as NCBI.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># To see sequence again</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>GGTCAGAAAAAGCCCTCTCCATGTCTACTCACGATACATCCCTGAAAACCACTGAGGAAGTGGCTTTTCAGATCATCTTGCTTTGCCAGTTTGGGGTTGGGACTTTTGCCAATGTATTTCTCTTTGTCTATAATTTCTCTCCAATCTCGACTGGTTCTAAACAGAGGCCCAGACAAGTGATTTTAAGACACATGGCTGTGGCCAATGCCTTAACTCTCTTCCTCACTATATTTCCAAACAACATGATGACTTTTGCTCCAATTATTCCTCAAACTGACCTCAAATGTAAATTAGAATTCTTCACTCGCCTCGTGGCAAGAAGCACAAACTTGTGTTCAACTTGTGTTCTGAGTATCCATCAGTTTGTCACACTTGTTCCTGTTAATTCAGGTAAAGGAATACTCAGAGCAAGTGTCACAAACATGGCAAGTTATTCTTGTTACAGTTGTTGGTTCTTCAGTGTCTTAAATAACATCTACATTCCAATTAAGGTCACTGGTCCACAGTTAACAGACAATAACAATAACTCTAAAAGCAAGTTGTTCTGTTCCACTTCTGATTTCAGTGTAGGCATTGTCTTCTTGAGGTTTGCCCATGATGCCACATTCATGAGCATCATGGTCTGGACCAGTGTCTCCATGGTACTTCTCCTCCATAGACATTGTCAGAGAATGCAGTACATATTCACTCTCAATCAGGACCCCAGGGGCCAAGCAGAGACCACAGCAACCCATACTATCCTGATGCTGGTAGTCACATTTGTTGGCTTTTATCTTCTAAGTCTTATTTGTATCATCTTTTACACCTATTTTATATATTCTCATCATTCCCTGAGGCATTGCAATGACATTTTGGTTTCGGGTTTCCCTACAATTTCTCCTTTACTGTTGACCTTCAGAGACCCTAAGGGTCCTTGTTCTGTGTTCTTCAACTGTTGAAAGCCAGAGTCACTAAAAATGCCAAACACAGAAGACAGCTTTGCTAATACCATTAAATACTTTATTCCATAAATATGTTTTTAAAAGCTTGTATGAACAAGGTATGGTGCTCACTGCTATACTTATAAAAGAGTAAGGTTATAATCACTTGTTGATATGAAAAGATTTCTGGTTGGAATCTGATTGAAACAGTGAGTTATTCACCACCCTCCATTCTCT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tabs replace with empty space to remove extra character from sequence file </span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>1157
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>GGTCAGAAAAAGCCCTCTCCATGTCTACTCACGATACATCCCTGAAAACCACTGAGGAAGTGGCTTTTCAGATCATCTTGCTTTGCCAGTTTGGGGTTGGGACTTTTGCCAATGTATTTCTCTTTGTCTATAATTTCTCTCCAATCTCGACTGGTTCTAAACAGAGGCCCAGACAAGTGATTTTAAGACACATGGCTGTGGCCAATGCCTTAACTCTCTTCCTCACTATATTTCCAAACAACATGATGACTTTTGCTCCAATTATTCCTCAAACTGACCTCAAATGTAAATTAGAATTCTTCACTCGCCTCGTGGCAAGAAGCACAAACTTGTGTTCAACTTGTGTTCTGAGTATCCATCAGTTTGTCACACTTGTTCCTGTTAATTCAGGTAAAGGAATACTCAGAGCAAGTGTCACAAACATGGCAAGTTATTCTTGTTACAGTTGTTGGTTCTTCAGTGTCTTAAATAACATCTACATTCCAATTAAGGTCACTGGTCCACAGTTAACAGACAATAACAATAACTCTAAAAGCAAGTTGTTCTGTTCCACTTCTGATTTCAGTGTAGGCATTGTCTTCTTGAGGTTTGCCCATGATGCCACATTCATGAGCATCATGGTCTGGACCAGTGTCTCCATGGTACTTCTCCTCCATAGACATTGTCAGAGAATGCAGTACATATTCACTCTCAATCAGGACCCCAGGGGCCAAGCAGAGACCACAGCAACCCATACTATCCTGATGCTGGTAGTCACATTTGTTGGCTTTTATCTTCTAAGTCTTATTTGTATCATCTTTTACACCTATTTTATATATTCTCATCATTCCCTGAGGCATTGCAATGACATTTTGGTTTCGGGTTTCCCTACAATTTCTCCTTTACTGTTGACCTTCAGAGACCCTAAGGGTCCTTGTTCTGTGTTCTTCAACTGTTGAAAGCCAGAGTCACTAAAAATGCCAAACACAGAAGACAGCTTTGCTAATACCATTAAATACTTTATTCCATAAATATGTTTTTAAAAGCTTGTATGAACAAGGTATGGTGCTCACTGCTATACTTATAAAAGAGTAAGGTTATAATCACTTGTTGATATGAAAAGATTTCTGGTTGGAATCTGATTGAAACAGTGAGTTATTCACCACCCTCCATTCTCT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Codon table for translation</span>
+<span class="n">table</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="s1">&#39;ATA&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATC&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATT&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATG&#39;</span><span class="p">:</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;ACA&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACC&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACG&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACT&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AAC&#39;</span><span class="p">:</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAT&#39;</span><span class="p">:</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">:</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;AAG&#39;</span><span class="p">:</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AGC&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGT&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGA&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;AGG&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span>                  
+        <span class="s1">&#39;CTA&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTC&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTG&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTT&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CCA&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCC&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCT&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CAC&#39;</span><span class="p">:</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAT&#39;</span><span class="p">:</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAA&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;CAG&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CGA&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGC&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGG&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGT&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GTA&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTC&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTG&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTT&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GCA&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCC&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCG&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCT&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GAC&#39;</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAT&#39;</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAA&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;GAG&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GGA&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGC&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGG&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGT&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TCA&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCC&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCG&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCT&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TTC&#39;</span><span class="p">:</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTT&#39;</span><span class="p">:</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTA&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;TTG&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TAC&#39;</span><span class="p">:</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAT&#39;</span><span class="p">:</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAA&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;TAG&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TGC&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGT&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGA&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;TGG&#39;</span><span class="p">:</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> 
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># To see the table </span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lookup / Extract infromation from the codon table </span>
+<span class="n">table</span><span class="p">[</span><span class="n">CAA</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mi">0</span><span class="n">fb9e6e3dc2d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Lookup</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">table</span><span class="p">[</span><span class="n">CAA</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;CAA&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Error occurs, because “CCA” is a string but we tried to access without quote. That’s why Python interpreter give an error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract &quot;CCA&quot;</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&quot;CAA&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Q&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;CCT&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;P&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="task-3-create-an-algorithm">
+<h2>Task-3: Create an Algorithm<a class="headerlink" href="#task-3-create-an-algorithm" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Step-1: Check the length of sequence is divisible by 3.</p></li>
+<li><p>Step-2: Look each 3 letter strings in table and store result.</p></li>
+<li><p>Step-3: Continue lookups untill reading end of sequence.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">protein</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="n">codon</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">protein</span> <span class="o">+=</span> <span class="n">table</span><span class="p">[</span><span class="n">codon</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-function-to-translate-dna-sequence-into-protein">
+<h3>Create a function to translate DNA sequence into protein.<a class="headerlink" href="#create-a-function-to-translate-dna-sequence-into-protein" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads sequence file as input. Transcribe input sequence file into RNA, then translate into Protein.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">table</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="s1">&#39;ATA&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATC&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATT&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATG&#39;</span><span class="p">:</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;ACA&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACC&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACG&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACT&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AAC&#39;</span><span class="p">:</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAT&#39;</span><span class="p">:</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">:</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;AAG&#39;</span><span class="p">:</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AGC&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGT&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGA&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;AGG&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span>                  
+        <span class="s1">&#39;CTA&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTC&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTG&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTT&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CCA&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCC&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCT&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CAC&#39;</span><span class="p">:</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAT&#39;</span><span class="p">:</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAA&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;CAG&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CGA&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGC&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGG&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGT&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GTA&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTC&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTG&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTT&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GCA&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCC&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCG&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCT&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GAC&#39;</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAT&#39;</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAA&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;GAG&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GGA&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGC&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGG&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGT&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TCA&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCC&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCG&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCT&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TTC&#39;</span><span class="p">:</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTT&#39;</span><span class="p">:</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTA&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;TTG&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TAC&#39;</span><span class="p">:</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAT&#39;</span><span class="p">:</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAA&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;TAG&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TGC&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGT&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGA&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;TGG&#39;</span><span class="p">:</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> 
+    <span class="p">}</span>
+    
+    <span class="n">protein</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">codon</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">protein</span> <span class="o">+=</span> <span class="n">table</span><span class="p">[</span><span class="n">codon</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">protein</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test translate function</span>
+<span class="n">translate</span><span class="p">(</span><span class="s2">&quot;ATA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;I&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;TCA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;S&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads sequence file as input. Transcribe input sequence file into RNA, then translate into Protein.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">table</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="s1">&#39;ATA&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATC&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATT&#39;</span><span class="p">:</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;ATG&#39;</span><span class="p">:</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;ACA&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACC&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACG&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;ACT&#39;</span><span class="p">:</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AAC&#39;</span><span class="p">:</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAT&#39;</span><span class="p">:</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;AAA&#39;</span><span class="p">:</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;AAG&#39;</span><span class="p">:</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AGC&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGT&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;AGA&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;AGG&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span>                  
+        <span class="s1">&#39;CTA&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTC&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTG&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;CTT&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CCA&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCC&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;CCT&#39;</span><span class="p">:</span><span class="s1">&#39;P&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CAC&#39;</span><span class="p">:</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAT&#39;</span><span class="p">:</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;CAA&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;CAG&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;CGA&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGC&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGG&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;CGT&#39;</span><span class="p">:</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GTA&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTC&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTG&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;GTT&#39;</span><span class="p">:</span><span class="s1">&#39;V&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GCA&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCC&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCG&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;GCT&#39;</span><span class="p">:</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GAC&#39;</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAT&#39;</span><span class="p">:</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GAA&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;GAG&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;GGA&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGC&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGG&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;GGT&#39;</span><span class="p">:</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TCA&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCC&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCG&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;TCT&#39;</span><span class="p">:</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TTC&#39;</span><span class="p">:</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTT&#39;</span><span class="p">:</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;TTA&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;TTG&#39;</span><span class="p">:</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TAC&#39;</span><span class="p">:</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAT&#39;</span><span class="p">:</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;TAA&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;TAG&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;TGC&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGT&#39;</span><span class="p">:</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;TGA&#39;</span><span class="p">:</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;TGG&#39;</span><span class="p">:</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> 
+    <span class="p">}</span>
+    
+    <span class="n">protein</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="n">codon</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">protein</span> <span class="o">+=</span> <span class="n">table</span><span class="p">[</span><span class="n">codon</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">protein</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">translate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Help on function translate in module __main__:
+
+translate(seq)
+    Reads sequence file as input. Transcribe input sequence file into RNA, then translate into Protein.
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;GCC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;A&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slicing sequence </span>
+<span class="n">seq</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;CCTGAAAACC&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-function-to-read-sequence-file">
+<h3>Create a function to read sequence file<a class="headerlink" href="#create-a-function-to-read-sequence-file" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_seq</span><span class="p">(</span><span class="n">inputfile</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;Reads and returns the input sequences with special characters removed&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> 
+        <span class="n">seq</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> 
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> 
+    
+    <span class="k">return</span> <span class="n">seq</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read DNA sequence by using read_seq() function</span>
+<span class="n">dna</span> <span class="o">=</span> <span class="n">read_seq</span><span class="p">(</span><span class="s2">&quot;../data/dna.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Call translate function</span>
+<span class="n">translate</span><span class="p">(</span><span class="n">dna</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Python gives us empty string! because <strong>sequence is not divisible by 3</strong>. NCBI translation starts with 21 and ends with 938. but in Python translation should start at 20 position and end at 938</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Empty string cause of length problem</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Call translation from 20 to 938</span>
+<span class="n">translate</span><span class="p">(</span><span class="n">dna</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">938</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;MSTHDTSLKTTEEVAFQIILLCQFGVGTFANVFLFVYNFSPISTGSKQRPRQVILRHMAVANALTLFLTIFPNNMMTFAPIIPQTDLKCKLEFFTRLVARSTNLCSTCVLSIHQFVTLVPVNSGKGILRASVTNMASYSCYSCWFFSVLNNIYIPIKVTGPQLTDNNNNSKSKLFCSTSDFSVGIVFLRFAHDATFMSIMVWTSVSMVLLLHRHCQRMQYIFTLNQDPRGQAETTATHTILMLVVTFVGFYLLSLICIIFYTYFIYSHHSLRHCNDILVSGFPTISPLLLTFRDPKGPCSVFFNC_&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="task-4-comparison">
+<h2>Task-4: Comparison<a class="headerlink" href="#task-4-comparison" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read protein sequence</span>
+<span class="n">prt</span> <span class="o">=</span> <span class="n">read_seq</span><span class="p">(</span><span class="s2">&quot;../data/protein.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Not identical cause of stop codon</span>
+<span class="n">prt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;MSTHDTSLKTTEEVAFQIILLCQFGVGTFANVFLFVYNFSPISTGSKQRPRQVILRHMAVANALTLFLTIFPNNMMTFAPIIPQTDLKCKLEFFTRLVARSTNLCSTCVLSIHQFVTLVPVNSGKGILRASVTNMASYSCYSCWFFSVLNNIYIPIKVTGPQLTDNNNNSKSKLFCSTSDFSVGIVFLRFAHDATFMSIMVWTSVSMVLLLHRHCQRMQYIFTLNQDPRGQAETTATHTILMLVVTFVGFYLLSLICIIFYTYFIYSHHSLRHCNDILVSGFPTISPLLLTFRDPKGPCSVFFNC&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">translate</span><span class="p">(</span><span class="n">dna</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">935</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;MSTHDTSLKTTEEVAFQIILLCQFGVGTFANVFLFVYNFSPISTGSKQRPRQVILRHMAVANALTLFLTIFPNNMMTFAPIIPQTDLKCKLEFFTRLVARSTNLCSTCVLSIHQFVTLVPVNSGKGILRASVTNMASYSCYSCWFFSVLNNIYIPIKVTGPQLTDNNNNSKSKLFCSTSDFSVGIVFLRFAHDATFMSIMVWTSVSMVLLLHRHCQRMQYIFTLNQDPRGQAETTATHTILMLVVTFVGFYLLSLICIIFYTYFIYSHHSLRHCNDILVSGFPTISPLLLTFRDPKGPCSVFFNC&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prt</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;MSTHDTSLKTTEEVAFQIILLCQFGVGTFANVFLFVYNFSPISTGSKQRPRQVILRHMAVANALTLFLTIFPNNMMTFAPIIPQTDLKCKLEFFTRLVARSTNLCSTCVLSIHQFVTLVPVNSGKGILRASVTNMASYSCYSCWFFSVLNNIYIPIKVTGPQLTDNNNNSKSKLFCSTSDFSVGIVFLRFAHDATFMSIMVWTSVSMVLLLHRHCQRMQYIFTLNQDPRGQAETTATHTILMLVVTFVGFYLLSLICIIFYTYFIYSHHSLRHCNDILVSGFPTISPLLLTFRDPKGPCSVFFNC&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comparison</span>
+<span class="n">prt</span> <span class="o">==</span> <span class="n">translate</span><span class="p">(</span><span class="n">dna</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">935</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exclude the last character</span>
+<span class="n">prt</span> <span class="o">==</span> <span class="n">translate</span><span class="p">(</span><span class="n">dna</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">938</span><span class="p">])[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jubayer Hossain<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

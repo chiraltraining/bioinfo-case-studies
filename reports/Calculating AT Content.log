@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/home/jubayer/anaconda3/envs/book-template/lib/python3.7/site-packages/jupyter_cache/executors/basic.py", line 157, in execute
+    executenb(nb_bundle.nb, cwd=tmpdirname)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
+    return ep.preprocess(nb, resources, km=km)[0]
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 448, in preprocess_cell
+    raise CellExecutionError.from_cell_and_msg(cell, out)
+nbconvert.preprocessors.execute.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def read_seq(inputfile):
+    """
+    Reads the DNA sequence file and returns as strings. Removes all the special characters.
+    """
+    with open(inputfile, "r") as f:
+        seq = f.read()
+        seq = seq.replace("\n", "")
+        seq = seq.replace("r", "")
+    return seq 
+
+def calculate_at_content(seq): 
+    """
+    Take DNA sequence as input and calculate the AT content.
+    """
+    no_of_a = seq.count("A")
+    no_of_t = seq.count("T")
+    total = no_of_a + no_of_t
+    at = total/len(seq) * 100
+    
+    return at 
+
+# Read the DNA sequence file 
+dna = read_seq("../data/dna.txt")
+# Calculate GC Content 
+result = calculate_at_content(dna)
+print(result)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-1-a3df46dcbeb9>[0m in [0;36m<module>[0;34m[0m
+[1;32m     21[0m [0;34m[0m[0m
+[1;32m     22[0m [0;31m# Read the DNA sequence file[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 23[0;31m [0mdna[0m [0;34m=[0m [0mread_seq[0m[0;34m([0m[0;34m"../data/dna.txt"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     24[0m [0;31m# Calculate GC Content[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     25[0m [0mresult[0m [0;34m=[0m [0mcalculate_at_content[0m[0;34m([0m[0mdna[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<ipython-input-1-a3df46dcbeb9>[0m in [0;36mread_seq[0;34m(inputfile)[0m
+[1;32m      3[0m     [0mReads[0m [0mthe[0m [0mDNA[0m [0msequence[0m [0mfile[0m [0;32mand[0m [0mreturns[0m [0;32mas[0m [0mstrings[0m[0;34m.[0m [0mRemoves[0m [0mall[0m [0mthe[0m [0mspecial[0m [0mcharacters[0m[0;34m.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     """
+[0;32m----> 5[0;31m     [0;32mwith[0m [0mopen[0m[0;34m([0m[0minputfile[0m[0;34m,[0m [0;34m"r"[0m[0;34m)[0m [0;32mas[0m [0mf[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      6[0m         [0mseq[0m [0;34m=[0m [0mf[0m[0;34m.[0m[0mread[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m         [0mseq[0m [0;34m=[0m [0mseq[0m[0;34m.[0m[0mreplace[0m[0;34m([0m[0;34m"\n"[0m[0;34m,[0m [0;34m""[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../data/dna.txt'
+FileNotFoundError: [Errno 2] No such file or directory: '../data/dna.txt'
+

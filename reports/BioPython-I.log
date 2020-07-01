@@ -1,0 +1,53 @@
+Traceback (most recent call last):
+  File "/home/jubayer/anaconda3/envs/book-template/lib/python3.7/site-packages/jupyter_cache/executors/basic.py", line 157, in execute
+    executenb(nb_bundle.nb, cwd=tmpdirname)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
+    return ep.preprocess(nb, resources, km=km)[0]
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/jubayer/.local/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 448, in preprocess_cell
+    raise CellExecutionError.from_cell_and_msg(cell, out)
+nbconvert.preprocessors.execute.CellExecutionError: An error occurred while executing the following cell:
+------------------
+for seq_record in SeqIO.parse("./dengue/den1.fasta", "fasta"):
+    ID = seq_record.id 
+    seqs = seq_record.seq[:100]
+    rep = repr(seq_record)
+    length = len(seq_record)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-27-2e8c3580bd67>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mfor[0m [0mseq_record[0m [0;32min[0m [0mSeqIO[0m[0;34m.[0m[0mparse[0m[0;34m([0m[0;34m"./dengue/den1.fasta"[0m[0;34m,[0m [0;34m"fasta"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m     [0mID[0m [0;34m=[0m [0mseq_record[0m[0;34m.[0m[0mid[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m     [0mseqs[0m [0;34m=[0m [0mseq_record[0m[0;34m.[0m[0mseq[0m[0;34m[[0m[0;34m:[0m[0;36m100[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mrep[0m [0;34m=[0m [0mrepr[0m[0;34m([0m[0mseq_record[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0mlength[0m [0;34m=[0m [0mlen[0m[0;34m([0m[0mseq_record[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/book-template/lib/python3.7/site-packages/Bio/SeqIO/__init__.py[0m in [0;36mparse[0;34m(handle, format, alphabet)[0m
+[1;32m    625[0m     [0;32mif[0m [0miterator_generator[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    626[0m         [0;32mif[0m [0malphabet[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 627[0;31m             [0mi[0m [0;34m=[0m [0miterator_generator[0m[0;34m([0m[0mhandle[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    628[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    629[0m             [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/book-template/lib/python3.7/site-packages/Bio/SeqIO/FastaIO.py[0m in [0;36m__init__[0;34m(self, source, alphabet, title2ids)[0m
+[1;32m    179[0m         """
+[1;32m    180[0m         [0mself[0m[0;34m.[0m[0mtitle2ids[0m [0;34m=[0m [0mtitle2ids[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 181[0;31m         [0msuper[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0m__init__[0m[0;34m([0m[0msource[0m[0;34m,[0m [0malphabet[0m[0;34m=[0m[0malphabet[0m[0;34m,[0m [0mmode[0m[0;34m=[0m[0;34m"t"[0m[0;34m,[0m [0mfmt[0m[0;34m=[0m[0;34m"Fasta"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    182[0m [0;34m[0m[0m
+[1;32m    183[0m     [0;32mdef[0m [0mparse[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mhandle[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/book-template/lib/python3.7/site-packages/Bio/SeqIO/Interfaces.py[0m in [0;36m__init__[0;34m(self, source, alphabet, mode, fmt)[0m
+[1;32m     40[0m         [0mself[0m[0;34m.[0m[0malphabet[0m [0;34m=[0m [0malphabet[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     41[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 42[0;31m             [0mself[0m[0;34m.[0m[0mstream[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0msource[0m[0;34m,[0m [0;34m"r"[0m [0;34m+[0m [0mmode[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     43[0m             [0mself[0m[0;34m.[0m[0mshould_close_stream[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     44[0m         [0;32mexcept[0m [0mTypeError[0m[0;34m:[0m  [0;31m# not a path, assume we received a stream[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: './dengue/den1.fasta'
+FileNotFoundError: [Errno 2] No such file or directory: './dengue/den1.fasta'
+
