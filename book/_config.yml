@@ -1,0 +1,41 @@
+#######################################################################################
+# Book settings
+title : Bioinformatics Case Studies
+author: Jubayer Hossain
+logo: 'book.png'
+email: contact.jubayerhossain@gmail.com
+# Information about where the book exists on the web
+description: >-
+  Bioinformatics Case Studies.
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks           : cache
+
+#######################################################################################
+# HTML settings
+html:
+  favicon:
+  google_analytics_id: UA-52617120-7
+  home_page_in_navbar: false
+  use_edit_page_button: true
+  baseurl: https://github.com/hdsnotes/bioinfo-case-studies
+
+#######################################################################################
+# HTML-specific settings
+html:
+  home_page_in_navbar         : false
+
+# #######################################################################################
+# Interact link settings
+notebook_interface            : "notebook"
+
+#######################################################################################
+# Launch button settings
+repository:
+  url                         : https://github.com/hdsnotes/bioinfo-case-studies/tree/master/book/docs
+  path_to_book                : "book/"
+
+latex:
+  latex_engine                : "xelatex"

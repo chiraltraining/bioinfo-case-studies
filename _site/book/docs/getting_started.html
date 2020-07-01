@@ -1,0 +1,356 @@
+<p>(getting_started)=</p>
+
+<h1 id="setting-up-your-python-environment">Setting up Your Python Environment</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>In this lecture, you will learn how to</p>
+
+<ol>
+  <li>get a Python environment up and running</li>
+  <li>execute simple Python commands</li>
+  <li>run a sample program</li>
+  <li>install the code libraries that underpin these lectures</li>
+</ol>
+
+<h2 id="anaconda">Anaconda</h2>
+
+<p>The <a href="https://www.python.org/downloads/">core Python package</a> is easy to
+install but <em>not</em> what you should choose for these lectures.</p>
+
+<p>These lectures require the entire scientific programming ecosystem,
+which</p>
+
+<ul>
+  <li>the core installation doesn't provide</li>
+  <li>is painful to install one piece at a time.</li>
+</ul>
+
+<p>Hence the best approach for our purposes is to install a Python
+distribution that contains</p>
+
+<ol>
+  <li>the core Python language <strong>and</strong></li>
+  <li>compatible versions of the most popular scientific libraries.</li>
+</ol>
+
+<p>The best such distribution is
+<a href="https://www.anaconda.com/what-is-anaconda/">Anaconda</a>.</p>
+
+<p>Anaconda is</p>
+
+<ul>
+  <li>very popular</li>
+  <li>cross-platform</li>
+  <li>comprehensive</li>
+  <li>completely unrelated to the Nicki Minaj song of the same name</li>
+</ul>
+
+<p>Anaconda also comes with a great package management system to organize
+your code libraries.</p>
+
+<pre><code class="language-{note}">All of what follows assumes that you adopt this recommendation!
+</code></pre>
+
+<p>(install_anaconda)=</p>
+
+<h3 id="installing-anaconda">Installing Anaconda</h3>
+
+<p>To install Anaconda, <a href="https://www.anaconda.com/download/">download</a> the
+binary and follow the instructions.</p>
+
+<p>Important points:</p>
+
+<ul>
+  <li>Install the latest version!</li>
+  <li>If you are asked during the installation process whether you'd like
+to make Anaconda your default Python installation, say yes.</li>
+</ul>
+
+<h3 id="updating-anaconda">Updating Anaconda</h3>
+
+<p>Anaconda supplies a tool called <code class="highlighter-rouge">conda</code> to manage and
+upgrade your Anaconda packages.</p>
+
+<p>One <code class="highlighter-rouge">conda</code> command you should execute regularly is the one
+that updates the whole Anaconda distribution.</p>
+
+<p>As a practice run, please execute the following</p>
+
+<ol>
+  <li>Open up a terminal</li>
+  <li>Type <code class="highlighter-rouge">conda update anaconda</code></li>
+</ol>
+
+<p>For more information on <code class="highlighter-rouge">conda</code>, type <code class="highlighter-rouge">conda
+help</code> in a terminal.</p>
+
+<p>(ipython_notebook)=</p>
+
+<h2 id="jupyter-notebooks">Jupyter Notebooks</h2>
+
+<p><a href="http://jupyter.org/">Jupyter</a> notebooks are one of the many possible
+ways to interact with Python and the scientific libraries.</p>
+
+<p>They use a <em>browser-based</em> interface to Python with</p>
+
+<ul>
+  <li>The ability to write and execute Python commands.</li>
+  <li>Formatted output in the browser, including tables, figures,
+animation, etc.</li>
+  <li>The option to mix in formatted text and mathematical expressions.</li>
+</ul>
+
+<p>Because of these features, Jupyter is now a major player in the
+scientific computing ecosystem.</p>
+
+<p>{numref}<code class="highlighter-rouge">Figure %s &lt;jp_demo&gt;</code> shows the execution of some code (borrowed from
+<a href="http://matplotlib.org/examples/pylab_examples/hexbin_demo.html">here</a>)
+in a Jupyter notebook</p>
+
+<p>```{figure} /_static/lecture_specific/getting_started/jp_demo.png
+:scale: 50%
+:name: jp_demo</p>
+
+<p>A Jupyter notebook viewed in the browser</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+While Jupyter isn\'t the only way to code in Python, it\'s great for
+when you wish to
+
+-   get started
+-   test new ideas or interact with small pieces of code
+-   share scientific ideas with students or colleagues
+
+
+### Starting the Jupyter Notebook
+
+Once you have installed Anaconda, you can start the Jupyter notebook.
+
+Either
+
+-   search for Jupyter in your applications menu, or
+-   open up a terminal and type `jupyter notebook`
+    - Windows users should substitute \"Anaconda command prompt\" for \"terminal\" in the previous line.
+
+If you use the second option, you will see something like this
+
+```{figure} /_static/lecture_specific/getting_started/starting_nb.png
+:scale: 50%
+</code></pre></div></div>
+
+<p>The output tells us the notebook is running at <code class="highlighter-rouge">http://localhost:8888/</code></p>
+
+<ul>
+  <li><code class="highlighter-rouge">localhost</code> is the name of the local machine</li>
+  <li><code class="highlighter-rouge">8888</code> refers to <a href="https://en.wikipedia.org/wiki/Port_%28computer_networking%29">port number</a>
+8888 on your computer</li>
+</ul>
+
+<p>Thus, the Jupyter kernel is listening for Python commands on port 8888 of our
+local machine.</p>
+
+<p>Hopefully, your default browser has also opened up with a web page that
+looks something like this</p>
+
+<p>```{figure} /_static/lecture_specific/getting_started/nb.png
+:scale: 50%</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+What you see here is called the Jupyter *dashboard*.
+
+If you look at the URL at the top, it should be `localhost:8888` or
+similar, matching the message above.
+
+Assuming all this has worked OK, you can now click on `New` at the top
+right and select `Python 3` or similar.
+
+Here\'s what shows up on our machine:
+
+```{figure} /_static/lecture_specific/getting_started/nb2.png
+:scale: 50%
+</code></pre></div></div>
+
+<p>The notebook displays an <em>active cell</em>, into which you can type Python
+commands.</p>
+
+<h3 id="notebook-basics">Notebook Basics</h3>
+
+<p>Let's start with how to edit code and run simple programs.</p>
+
+<h4 id="running-cells">Running Cells</h4>
+
+<p>Notice that, in the previous figure, the cell is surrounded by a green
+border.</p>
+
+<p>This means that the cell is in <em>edit mode</em>.</p>
+
+<p>In this mode, whatever you type will appear in the cell with the
+flashing cursor.</p>
+
+<p>When you're ready to execute the code in a cell, hit <code class="highlighter-rouge">Shift-Enter</code>
+instead of the usual <code class="highlighter-rouge">Enter</code>.</p>
+
+<p>```{figure} /_static/lecture_specific/getting_started/nb3.png
+:scale: 50%</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+(Note: There are also menu and button options for running code in a cell
+that you can find by exploring)
+
+#### Modal Editing
+
+The next thing to understand about the Jupyter notebook is that it uses
+a *modal* editing system.
+
+This means that the effect of typing at the keyboard **depends on which
+mode you are in**.
+
+The two modes are
+
+1.  Edit mode
+    -   Indicated by a green border around one cell, plus a blinking cursor
+    -   Whatever you type appears as is in that cell
+2.  Command mode
+    -   The green border is replaced by a grey (or grey and blue) border
+    -   Keystrokes are interpreted as commands --- for example, typing `b` adds a new cell below the current one
+
+To switch to
+-   command mode from edit mode, hit the `Esc` key or `Ctrl-M`
+-   edit mode from command mode, hit `Enter` or click in a cell
+
+The modal behavior of the Jupyter notebook is very efficient when you
+get used to it.
+
+#### Inserting Unicode (e.g., Greek Letters)
+
+Python supports [unicode](https://docs.python.org/3/howto/unicode.html),
+allowing the use of characters such as $\alpha$ and $\beta$ as names in
+your code.
+
+In a code cell, try typing `\alpha` and then hitting the
+`tab` key on your keyboard.
+
+(a_test_program)=
+
+#### A Test Program
+
+Let\'s run a test program.
+
+Here\'s an arbitrary program we can use:
+&lt;http://matplotlib.org/3.1.1/gallery/pie_and_polar_charts/polar_bar.html&gt;.
+
+On that page, you\'ll see the following code
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+# Compute pie slices
+N = 20
+θ = np.linspace(0.0, 2 * np.pi, N, endpoint=False)
+radii = 10 * np.random.rand(N)
+width = np.pi / 4 * np.random.rand(N)
+colors = plt.cm.viridis(radii / 10.)
+
+ax = plt.subplot(111, projection='polar')
+ax.bar(θ, radii, width=width, bottom=0.0, color=colors, alpha=0.5)
+
+plt.show()
+</code></pre></div></div>
+
+<p>Don't worry about the details for now — let's just run it and see
+what happens.</p>
+
+<p>The easiest way to run this code is to copy and paste it into a cell in
+the notebook.</p>
+
+<p>Hopefully you will get a similar plot.</p>
+
+<h3 id="working-with-the-notebook">Working with the Notebook</h3>
+
+<p>Here are a few more tips on working with Jupyter notebooks.</p>
+
+<h4 id="tab-completion">Tab Completion</h4>
+
+<p>In the previous program, we executed the line <code class="highlighter-rouge">import numpy as np</code></p>
+
+<ul>
+  <li>NumPy is a numerical library we'll work with in depth.</li>
+</ul>
+
+<p>After this import command, functions in NumPy can be accessed with
+<code class="highlighter-rouge">np.function_name</code> type syntax.</p>
+
+<ul>
+  <li>For example, try <code class="highlighter-rouge">np.random.randn(3)</code>.</li>
+</ul>
+
+<p>We can explore these attributes of <code class="highlighter-rouge">np</code> using the <code class="highlighter-rouge">Tab</code> key.</p>
+
+<p>For example, here we type <code class="highlighter-rouge">np.ran</code> and hit Tab</p>
+
+<p>```{figure} /_static/lecture_specific/getting_started/nb6.png
+:scale: 50%</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Jupyter offers up the two possible completions, `random` and `rank`.
+
+In this way, the Tab key helps remind you of what\'s available and also
+saves you typing.
+
+(gs_help)=
+
+#### On-Line Help
+
+To get help on `np.rank`, say, we can execute `np.rank?`.
+
+Documentation appears in a split window of the browser, like so
+
+```{figure} /_static/lecture_specific/getting_started/nb6a.png
+:scale: 50%
+</code></pre></div></div>
+
+<p>Clicking on the top right of the lower split closes the on-line help.</p>
+
+<h4 id="other-content">Other Content</h4>
+
+<p>In addition to executing code, the Jupyter notebook allows you to embed
+text, equations, figures and even videos in the page.</p>
+
+<p>For example, here we enter a mixture of plain text and LaTeX instead of
+code</p>
+
+<p>```{figure} /_static/lecture_specific/getting_started/nb7.png
+:scale: 50%</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Next we `Esc` to enter command mode and then type `m` to indicate that
+we are writing [Markdown](http://daringfireball.net/projects/markdown/),
+a mark-up language similar to (but simpler than) LaTeX.
+
+(You can also use your mouse to select `Markdown` from the `Code`
+drop-down box just below the list of menu items)
+
+Now we `Shift+Enter` to produce this
+
+```{figure} /_static/lecture_specific/getting_started/nb8.png
+:scale: 50%
+</code></pre></div></div>
+
+<h3 id="sharing-notebooks">Sharing Notebooks</h3>
+
+<p>Notebook files are just text files structured in
+<a href="https://en.wikipedia.org/wiki/JSON">JSON</a> and typically ending with
+<code class="highlighter-rouge">.ipynb</code>.</p>
+
+<p>You can share them in the usual way that you share files — or by
+using web services such as <a href="http://nbviewer.jupyter.org/">nbviewer</a>.</p>
+
+<p>The notebooks you see on that site are <strong>static</strong> html representations.</p>
+
+<p>To run one, download it as an <code class="highlighter-rouge">ipynb</code> file by clicking on the download
+icon.</p>
+
+<p>Save it somewhere, navigate to it from the Jupyter dashboard and then
+run as discussed above.</p>
+
