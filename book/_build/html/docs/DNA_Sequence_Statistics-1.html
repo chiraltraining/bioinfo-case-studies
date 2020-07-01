@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>DNA Sequence Statistics-1 &#8212; Bioinformatics Case Studies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .secondtoggle, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DNA Sequence Statistics-2" href="DNA_Sequence_Statistics-2.html" />
+    <link rel="prev" title="An Introduction to Data Visualization with Matplotlib" href="Introduction_to_Data_Visualization_with_Python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Bioinformatics Case Studies</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="QuickPython.html">Python Quick Guide</a>
+  </li>
+  <li class="">
+    <a href="Introduction_to_Data_Visualization_with_Python.html">An Introduction to Data Visualization with Matplotlib</a>
+  </li>
+  <li class="active">
+    <a href="">DNA Sequence Statistics-1</a>
+  </li>
+  <li class="">
+    <a href="DNA_Sequence_Statistics-2.html">DNA Sequence Statistics-2</a>
+  </li>
+</ul>
+</nav>
+<p class="navbar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/docs/DNA_Sequence_Statistics-1.ipynb.txt"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.ipynb</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Edit this page -->
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+            <div class="dropdown-buttons">
+                
+                <a class="binder-button" href="https://mybinder.org/v2/gh/hdsnotes/bioinfo-case-studies/master?urlpath=tree/book/docs/DNA_Sequence_Statistics-1.ipynb"><button type="button" class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip" data-placement="left"><img class="binder-button-logo" src="../_static/images/logo_binder.svg" alt="Interact on binder">Binder</button></a>
+                
+                
+                
+            </div>
+        </div>
+        
+
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#function-for-reading-fasta-fasq-file" class="nav-link">Function for Reading FASTA/FASQ File</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#read-fasta-fasq-file" class="nav-link">Read FASTA/FASQ File</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#statistical-aanalysis" class="nav-link">Statistical Aanalysis</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#length-of-a-dna-sequence" class="nav-link">Length of a DNA sequence</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#base-composition-of-a-dna-sequence" class="nav-link">Base composition of a DNA sequence¶</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#by-creating-a-function" class="nav-link">By creating a function</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#by-collections-modules" class="nav-link">By collections modules</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#frequency-with-counter" class="nav-link">Frequency with Counter</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#gc-content-of-dna" class="nav-link">GC Content of DNA</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#at-content-of-dna" class="nav-link">AT Content of DNA</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#a-sliding-window-analysis-of-gc-content" class="nav-link">A sliding window analysis of GC content</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#gc-content-of-the-non-overlapping-sub-sequences-of-size-k" class="nav-link">GC content of the non-overlapping sub-sequences of size k</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#k-mer-analysis" class="nav-link">K-mer Analysis</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#references" class="nav-link">References</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="dna-sequence-statistics-1">
+<h1>DNA Sequence Statistics-1<a class="headerlink" href="#dna-sequence-statistics-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="function-for-reading-fasta-fasq-file">
+<h2>Function for Reading FASTA/FASQ File<a class="headerlink" href="#function-for-reading-fasta-fasq-file" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">screed</span> <span class="c1"># A Python library for reading FASTA and FASQ file format.</span>
+<span class="k">def</span> <span class="nf">readFastaFile</span><span class="p">(</span><span class="n">inputfile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads and returns file as FASTA format with special characters removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">screed</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">seqfile</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">read</span> <span class="ow">in</span> <span class="n">seqfile</span><span class="p">:</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">sequence</span>
+    <span class="k">return</span> <span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="read-fasta-fasq-file">
+<h2>Read FASTA/FASQ File<a class="headerlink" href="#read-fasta-fasq-file" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">den1</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">den2</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den2.fasta&quot;</span><span class="p">)</span>
+<span class="n">den3</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den3.fasta&quot;</span><span class="p">)</span>
+<span class="n">den4</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den4.fasta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="statistical-aanalysis">
+<h2>Statistical Aanalysis<a class="headerlink" href="#statistical-aanalysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="length-of-a-dna-sequence">
+<h3>Length of a DNA sequence<a class="headerlink" href="#length-of-a-dna-sequence" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># length of DEN1 </span>
+<span class="nb">len</span><span class="p">(</span><span class="n">den1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10735
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># length of DEN2</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">den2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10723
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># length of DEN3</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">den3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10707
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">den4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10649
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="base-composition-of-a-dna-sequence">
+<h3>Base composition of a DNA sequence¶<a class="headerlink" href="#base-composition-of-a-dna-sequence" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="by-creating-a-function">
+<h4>By creating a function<a class="headerlink" href="#by-creating-a-function" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_base</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="n">base_counts</span> <span class="o">=</span> <span class="p">{}</span> 
+    <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">base_counts</span><span class="p">:</span> 
+            <span class="n">base_counts</span><span class="p">[</span><span class="n">base</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> 
+        <span class="k">else</span><span class="p">:</span> 
+            <span class="n">base_counts</span><span class="p">[</span><span class="n">base</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> 
+    <span class="k">return</span> <span class="n">base_counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s call the function count_base</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">count_base</span><span class="p">(</span><span class="n">den1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 3426, &#39;G&#39;: 2770, &#39;T&#39;: 2299, &#39;C&#39;: 2240}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="by-collections-modules">
+<h4>By collections modules<a class="headerlink" href="#by-collections-modules" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="k">def</span> <span class="nf">count_base</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="n">base_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base_counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bases</span> <span class="o">=</span> <span class="n">count_base</span><span class="p">(</span><span class="n">den1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bases</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;A&#39;: 3426, &#39;G&#39;: 2770, &#39;T&#39;: 2299, &#39;C&#39;: 2240})
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="frequency-with-counter">
+<h3>Frequency with Counter<a class="headerlink" href="#frequency-with-counter" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="c1"># Base composition of DEN1</span>
+<span class="n">freq1</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">den1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">freq1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;A&#39;: 3426, &#39;G&#39;: 2770, &#39;T&#39;: 2299, &#39;C&#39;: 2240})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Base composition of DEN2</span>
+<span class="n">freq2</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">den2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">freq2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;A&#39;: 3553, &#39;G&#39;: 2713, &#39;T&#39;: 2257, &#39;C&#39;: 2200})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Base composition of DEN3</span>
+<span class="n">freq3</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">den3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">freq3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;A&#39;: 3425, &#39;G&#39;: 2783, &#39;T&#39;: 2281, &#39;C&#39;: 2218})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Base composition of DEN4</span>
+<span class="n">freq4</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">den4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">freq2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;A&#39;: 3553, &#39;G&#39;: 2713, &#39;T&#39;: 2257, &#39;C&#39;: 2200})
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gc-content-of-dna">
+<h3>GC Content of DNA<a class="headerlink" href="#gc-content-of-dna" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">screed</span> <span class="c1"># A Python library for reading FASTA and FASQ file format.</span>
+<span class="k">def</span> <span class="nf">readFastaFile</span><span class="p">(</span><span class="n">inputfile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads and returns file as FASTA format with special characters removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">screed</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">seqfile</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">read</span> <span class="ow">in</span> <span class="n">seqfile</span><span class="p">:</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">sequence</span>
+    <span class="k">return</span> <span class="n">seq</span>
+
+<span class="k">def</span> <span class="nf">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take DNA sequence as input and calculate the GC content.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">no_of_g</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)</span>
+    <span class="n">no_of_c</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">no_of_g</span> <span class="o">+</span> <span class="n">no_of_c</span> 
+    <span class="n">gc</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    
+    <span class="k">return</span> <span class="n">gc</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate GC Content of DEN1</span>
+<span class="n">den1</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">den1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>46.66977177456917
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate GC Content of DEN2</span>
+<span class="n">den2</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den2.fasta&quot;</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">den2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>45.81740184649818
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate GC Content of DEN3</span>
+<span class="n">den3</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den3.fasta&quot;</span><span class="p">)</span>
+<span class="n">result3</span> <span class="o">=</span> <span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">den3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>46.707761277668816
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate GC Content of DEN4</span>
+<span class="n">den4</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den4.fasta&quot;</span><span class="p">)</span>
+<span class="n">result4</span> <span class="o">=</span> <span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">den4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>47.1217954737534
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="at-content-of-dna">
+<h3>AT Content of DNA<a class="headerlink" href="#at-content-of-dna" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">screed</span> <span class="c1"># A Python library for reading FASTA and FASQ file format.</span>
+<span class="k">def</span> <span class="nf">readFastaFile</span><span class="p">(</span><span class="n">inputfile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads and returns file as FASTA format with special characters removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">screed</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">seqfile</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">read</span> <span class="ow">in</span> <span class="n">seqfile</span><span class="p">:</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">sequence</span>
+    <span class="k">return</span> <span class="n">seq</span>
+
+<span class="k">def</span> <span class="nf">calculate_at_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take DNA sequence as input and calculate the AT content.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">no_of_a</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+    <span class="n">no_of_t</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">no_of_a</span> <span class="o">+</span> <span class="n">no_of_t</span>
+    <span class="n">at</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    
+    <span class="k">return</span> <span class="n">at</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate AT Content of DEN1</span>
+<span class="n">den1</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">calculate_at_content</span><span class="p">(</span><span class="n">den1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>53.33022822543083
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate AT Content of DEN2</span>
+<span class="n">den2</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den2.fasta&quot;</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">calculate_at_content</span><span class="p">(</span><span class="n">den2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>54.182598153501814
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate AT Content of DEN3</span>
+<span class="n">den3</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den3.fasta&quot;</span><span class="p">)</span>
+<span class="n">result3</span> <span class="o">=</span> <span class="n">calculate_at_content</span><span class="p">(</span><span class="n">den3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>53.292238722331184
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate AT Content of DEN4</span>
+<span class="n">den4</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den4.fasta&quot;</span><span class="p">)</span>
+<span class="n">result4</span> <span class="o">=</span> <span class="n">calculate_at_content</span><span class="p">(</span><span class="n">den4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>52.8782045262466
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-sliding-window-analysis-of-gc-content">
+<h3>A sliding window analysis of GC content<a class="headerlink" href="#a-sliding-window-analysis-of-gc-content" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">screed</span> <span class="c1"># A Python library for reading FASTA and FASQ file format.</span>
+<span class="k">def</span> <span class="nf">readFastaFile</span><span class="p">(</span><span class="n">inputfile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads and returns file as FASTA format with special characters removed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">screed</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">inputfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">seqfile</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">read</span> <span class="ow">in</span> <span class="n">seqfile</span><span class="p">:</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">sequence</span>
+    <span class="k">return</span> <span class="n">seq</span>
+
+<span class="k">def</span> <span class="nf">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span> 
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take DNA sequence as input and calculate the GC content.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">no_of_g</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;G&quot;</span><span class="p">)</span>
+    <span class="n">no_of_c</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">no_of_g</span> <span class="o">+</span> <span class="n">no_of_c</span> 
+    <span class="n">gc</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    
+    <span class="k">return</span> <span class="n">gc</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the GC content of nucleotides 1-2000 of the Dengue genome(DEN-1)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2001</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>46.550000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the GC content of nucleotides 2001-4000 of the Dengue genome(DEN-1)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">2001</span><span class="p">:</span><span class="mi">4001</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>45.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the GC content of nucleotides 4001-6000 of the Dengue genome(DEN-1)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">4001</span><span class="p">:</span><span class="mi">6001</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>47.099999999999994
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the GC content of nucleotides 6001-8000 of the Dengue genome(DEN-1)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">6001</span><span class="p">:</span><span class="mi">8001</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>47.85
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the GC content of nucleotides 8001-10000 of the Dengue genome(DEN-1)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">8001</span><span class="p">:</span><span class="mi">10001</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>45.45
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the GC content of nucleotides 10001-10735 of the Dengue genome(DEN-1)</span>
+<span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+<span class="n">calculate_gc_content</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">10001</span><span class="p">:</span><span class="mi">10735</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>50.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gc-content-of-the-non-overlapping-sub-sequences-of-size-k">
+<h2>GC content of the non-overlapping sub-sequences of size k<a class="headerlink" href="#gc-content-of-the-non-overlapping-sub-sequences-of-size-k" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_gc</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Returns percentage of G and C nucleotides in a DNA sequence.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gc</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">base</span> <span class="ow">in</span> <span class="s2">&quot;GCgc&quot;</span><span class="p">:</span>
+            <span class="n">gc</span> <span class="o">+=</span> <span class="mi">1</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gc</span> <span class="o">=</span> <span class="mi">1</span> 
+    <span class="k">return</span> <span class="n">gc</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="k">def</span> <span class="nf">gc_subseq</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns GC content of non − overlapping sub− sequences of size k.</span>
+<span class="sd">    The result is a list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span> 
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">subseq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">gc</span> <span class="o">=</span> <span class="n">calculate_gc</span><span class="p">(</span><span class="n">subseq</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gc</span> 
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gc_subseq</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="k-mer-analysis">
+<h2>K-mer Analysis<a class="headerlink" href="#k-mer-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_kmers</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">ksize</span><span class="p">):</span>
+    <span class="n">kmers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n_kmers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span> <span class="o">-</span> <span class="n">ksize</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_kmers</span><span class="p">):</span>
+        <span class="n">kmer</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">ksize</span><span class="p">]</span>
+        <span class="n">kmers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kmer</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">kmers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="n">readFastaFile</span><span class="p">(</span><span class="s2">&quot;../dengue/den1.fasta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dimer</span>
+<span class="n">km2</span> <span class="o">=</span> <span class="n">build_kmers</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count dimer</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">dimer</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">km2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dimer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;AA&#39;: 1108, &#39;GA&#39;: 976, &#39;CA&#39;: 901, &#39;AG&#39;: 890, &#39;TG&#39;: 832, &#39;GG&#39;: 787, &#39;AC&#39;: 720, &#39;AT&#39;: 708, &#39;CT&#39;: 555, &#39;TT&#39;: 529, &#39;CC&#39;: 523, &#39;GT&#39;: 507, &#39;GC&#39;: 500, &#39;TC&#39;: 497, &#39;TA&#39;: 440, &#39;CG&#39;: 261})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trimer </span>
+<span class="n">km3</span> <span class="o">=</span> <span class="n">build_kmers</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count trimer</span>
+<span class="n">trimer</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">km3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trimer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Counter({&#39;AAA&#39;: 388, &#39;GGA&#39;: 354, &#39;GAA&#39;: 346, &#39;AGA&#39;: 334, &#39;TGG&#39;: 321, &#39;ACA&#39;: 294, &#39;ATG&#39;: 292, &#39;AAG&#39;: 280, &#39;CAA&#39;: 273, &#39;GAG&#39;: 249, &#39;AAC&#39;: 237, &#39;AGG&#39;: 237, &#39;CCA&#39;: 236, &#39;CAG&#39;: 227, &#39;TGA&#39;: 218, &#39;AAT&#39;: 203, &#39;CAT&#39;: 203, &#39;TCA&#39;: 202, &#39;CAC&#39;: 198, &#39;GAC&#39;: 197, &#39;GTG&#39;: 192, &#39;CTG&#39;: 186, &#39;AGC&#39;: 184, &#39;GAT&#39;: 184, &#39;ACC&#39;: 176, &#39;GCA&#39;: 169, &#39;TTG&#39;: 162, &#39;TGT&#39;: 160, &#39;GGG&#39;: 160, &#39;ACT&#39;: 156, &#39;GCT&#39;: 144, &#39;GGT&#39;: 141, &#39;ATA&#39;: 141, &#39;TTT&#39;: 139, &#39;ATT&#39;: 138, &#39;ATC&#39;: 137, &#39;GTT&#39;: 136, &#39;AGT&#39;: 135, &#39;TCT&#39;: 134, &#39;TAG&#39;: 133, &#39;TTC&#39;: 133, &#39;TGC&#39;: 133, &#39;GGC&#39;: 132, &#39;CTA&#39;: 131, &#39;GCC&#39;: 129, &#39;CTC&#39;: 121, &#39;CCT&#39;: 121, &#39;TAT&#39;: 118, &#39;CTT&#39;: 116, &#39;TCC&#39;: 112, &#39;GTC&#39;: 106, &#39;CCC&#39;: 106, &#39;TAA&#39;: 101, &#39;TTA&#39;: 95, &#39;ACG&#39;: 94, &#39;TAC&#39;: 88, &#39;GTA&#39;: 73, &#39;CGT&#39;: 71, &#39;CGA&#39;: 70, &#39;CGG&#39;: 69, &#39;CCG&#39;: 60, &#39;GCG&#39;: 58, &#39;CGC&#39;: 51, &#39;TCG&#39;: 49})
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>https://computationalgenomics.blogs.bristol.ac.uk/case_studies/haemophilus_demo</p></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Introduction_to_Data_Visualization_with_Python.html" title="previous page">An Introduction to Data Visualization with Matplotlib</a>
+    <a class='right-next' id="next-link" href="DNA_Sequence_Statistics-2.html" title="next page">DNA Sequence Statistics-2</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jubayer Hossain<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
