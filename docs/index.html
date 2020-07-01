@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Bioinformatics Case Studies &#8212; Bioinformatics Case Studies</title>
+    <title>Python for Bioinformatics(PY4Bioinformatics) &#8212; Python for Bioinformatics(PY4Bioinformatics)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -31,7 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python Quick Guide" href="QuickPython.html" />
+    <link rel="next" title="Quick Introduction to Python" href="QuickPython.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -53,7 +53,7 @@
   <img src="../_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">Bioinformatics Case Studies</h1>
+  <h1 class="site-logo" id="site-title">Python for Bioinformatics(PY4Bioinformatics)</h1>
   
 </a>
 </div>
@@ -67,16 +67,19 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="QuickPython.html">Python Quick Guide</a>
+    <a href="QuickPython.html">Quick Introduction to Python</a>
+  </li>
+  <li class="">
+    <a href="Working_with_Sequence_Data[Text Format].html">Text Data Handling in Python</a>
+  </li>
+  <li class="">
+    <a href="Working_with_Sequence_Data[FASTA].html">Introduction to Sequence Data Analysis with Python</a>
+  </li>
+  <li class="">
+    <a href="Working_with_Sequence_Data[FASTQ].html">FASTQ Format Handling</a>
   </li>
   <li class="">
     <a href="Introduction_to_Data_Visualization_with_Python.html">An Introduction to Data Visualization with Matplotlib</a>
-  </li>
-  <li class="">
-    <a href="DNA_Sequence_Statistics-1.html">DNA Sequence Statistics-1</a>
-  </li>
-  <li class="">
-    <a href="DNA_Sequence_Statistics-2.html">DNA Sequence Statistics-2</a>
   </li>
 </ul>
 </nav>
@@ -127,9 +130,38 @@
         
     </div>
     <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
     <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#about-python" class="nav-link">About Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#what-s-python" class="nav-link">What’s Python?</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#common-uses" class="nav-link">Common Uses</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#features" class="nav-link">Features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#syntax-and-design" class="nav-link">Syntax and Design</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#scientific-programming" class="nav-link">Scientific Programming</a>
+        </li>
     
     </ul>
 </nav>
@@ -142,29 +174,95 @@
         
               <div>
                 
-  <div class="section" id="bioinformatics-case-studies">
-<h1>Bioinformatics Case Studies<a class="headerlink" href="#bioinformatics-case-studies" title="Permalink to this headline">¶</a></h1>
-<p>This is a short sequence of lectures on Python programming for scientific
-work, written by <a class="reference external" href="http://www.tomsargent.com/">Thomas J.  Sargent</a> and <a class="reference external" href="https://johnstachurski.net/">John
-Stachurski</a>.</p>
+  <div class="section" id="python-for-bioinformatics-py4bioinformatics">
+<h1>Python for Bioinformatics(PY4Bioinformatics)<a class="headerlink" href="#python-for-bioinformatics-py4bioinformatics" title="Permalink to this headline">¶</a></h1>
+<p>This is a short sequence of notes on Python programming for scientific
+work, specially in the field of bioinformatics written by <a class="reference external" href="https://www.linkedin.com/in/jubayer28/">Jubayer Hossian</a>.</p>
+<div class="section" id="about-python">
+<h2>About Python<a class="headerlink" href="#about-python" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>“Python has gotten sufficiently weapons grade that we don’t descend
+into R anymore. Sorry, R people. I used to be one of you but we no
+longer descend into R.” – Chris Wiggins</p>
+</div></blockquote>
+</div>
+<div class="section" id="what-s-python">
+<h2>What’s Python?<a class="headerlink" href="#what-s-python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.python.org">Python</a> is a general-purpose programming
+language conceived in 1989 by Dutch programmer <a class="reference external" href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van
+Rossum</a>.</p>
+<p>Python is free and open source, with development coordinated through the
+<a class="reference external" href="https://www.python.org/psf/">Python Software Foundation</a>.</p>
+<p>Python has experienced rapid adoption in the last decade and is now one
+of the most commonly used programming languages.</p>
+<p>Popular textbooks on Python programming include <a class="bibtex reference internal" href="about_py.html#guttag2016introduction" id="id1">[Gut16]</a> and <a class="bibtex reference internal" href="about_py.html#hill2016learning" id="id2">[Hil16]</a>.</p>
+<div class="section" id="common-uses">
+<h3>Common Uses<a class="headerlink" href="#common-uses" title="Permalink to this headline">¶</a></h3>
+<p>Python is a general-purpose language used in almost all application domains
+such as</p>
+<ul class="simple">
+<li><p>communications</p></li>
+<li><p>web development</p></li>
+<li><p>CGI and graphical user interfaces</p></li>
+<li><p>game development</p></li>
+<li><p>data science</p></li>
+<li><p>bioinformatics</p></li>
+<li><p>multimedia, data processing, security, etc., etc., etc.</p></li>
+</ul>
+<p>Python is beginner-friendly and routinely used to teach computer science and
+programming in top computer science programs.</p>
+<p>Python is particularly popular within the scientific and data science
+communities.</p>
+</div>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<p>Python is a <a class="reference external" href="https://en.wikipedia.org/wiki/High-level_programming_language">high-level language</a>
+suitable for rapid development.</p>
+<p>It has a relatively small core language supported by many libraries.</p>
+<p>Multiple programming styles are supported (procedural, object-oriented, functional, etc.)</p>
+<p>Python is interpreted rather than compiled.</p>
+</div>
+<div class="section" id="syntax-and-design">
+<h3>Syntax and Design<a class="headerlink" href="#syntax-and-design" title="Permalink to this headline">¶</a></h3>
+<p>One nice feature of Python is its elegant syntax — we’ll see many
+examples later on.</p>
+<p>Elegant code might sound superfluous but in fact it’s highly beneficial
+because it makes the syntax easy to read and easy to remember.</p>
+<p>Remembering how to read from files, sort dictionaries and other such
+routine tasks means that you don’t need to break your flow in order to
+hunt down correct syntax.</p>
+<p>Closely related to elegant syntax is an elegant design.</p>
+<p>Features like iterators, generators, decorators and list comprehensions
+make Python highly expressive, allowing you to get more done with less
+code.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Namespace">Namespaces</a> improve
+productivity by cutting down on bugs and syntax errors.</p>
+</div>
+</div>
+<div class="section" id="scientific-programming">
+<h2>Scientific Programming<a class="headerlink" href="#scientific-programming" title="Permalink to this headline">¶</a></h2>
+<p>Python has become one of the core languages of scientific computing.</p>
+<p>It’s either the dominant player or a major player in</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://scikit-learn.org/stable/">machine learning and data science</a></p></li>
+<li><p><a class="reference external" href="http://www.astropy.org/">astronomy</a></p></li>
+<li><p><a class="reference external" href="https://wiki.python.org/moin/PythonForArtificialIntelligence">artificial intelligence</a></p></li>
+<li><p><a class="reference external" href="http://chemlab.github.io/chemlab/">chemistry</a></p></li>
+<li><p><a class="reference external" href="http://biopython.org/wiki/Main_Page">computational biology</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/meteorology/">meteorology</a></p></li>
+</ul>
+<p>Its popularity in economics is also beginning to rise.</p>
 <div class="alert alert-info">
 <p class="admonition-title">Note</p>
-<p>These lectures were built using the new Sphinx-based <a class="reference external" href="https://beta.jupyterbook.org/intro.html">Jupyter Book
+<p>These notes were built using the new Sphinx-based <a class="reference external" href="https://beta.jupyterbook.org/intro.html">Jupyter Book
 2.0</a> tool set, as part of the
 <a class="reference external" href="https://ebp.jupyterbook.org/en/latest/">ExecutableBookProject</a>.  They are
 intended mainly as a demonstration of these tools.
 Instructions for how to build them from source can be found in the Jupyter
 Book documentation.</p>
 </div>
-<p>These lectures are a mini-version of a <a class="reference external" href="https://executablebookproject.github.io/quantecon-example/docs/index.html">longer
-series</a>
-of lectures, also built using Jupyter Book 2.0.  That series contains more
-features and applications but also requires more libraries and takes longer to
-run.</p>
-<p>Both lecture series are taken from a <a class="reference external" href="https://python.quantecon.org">more complete set of
-lectures</a> on open source computing hosted by
-<a class="reference external" href="https://quantecon.org">QuantEcon</a>.</p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 
@@ -177,7 +275,7 @@ lectures</a> on open source computing hosted by
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="QuickPython.html" title="next page">Python Quick Guide</a>
+    <a class='right-next' id="next-link" href="QuickPython.html" title="next page">Quick Introduction to Python</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

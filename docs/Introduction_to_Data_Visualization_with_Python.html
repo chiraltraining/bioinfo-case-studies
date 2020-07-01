@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>An Introduction to Data Visualization with Matplotlib &#8212; Bioinformatics Case Studies</title>
+    <title>An Introduction to Data Visualization with Matplotlib &#8212; Python for Bioinformatics(PY4Bioinformatics)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -31,8 +31,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DNA Sequence Statistics-1" href="DNA_Sequence_Statistics-1.html" />
-    <link rel="prev" title="Python Quick Guide" href="QuickPython.html" />
+    <link rel="prev" title="FASTQ Format Handling" href="Working_with_Sequence_Data[FASTQ].html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -54,7 +53,7 @@
   <img src="../_static/logo.png" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">Bioinformatics Case Studies</h1>
+  <h1 class="site-logo" id="site-title">Python for Bioinformatics(PY4Bioinformatics)</h1>
   
 </a>
 </div>
@@ -68,16 +67,19 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
-    <a href="QuickPython.html">Python Quick Guide</a>
+    <a href="QuickPython.html">Quick Introduction to Python</a>
+  </li>
+  <li class="">
+    <a href="Working_with_Sequence_Data[Text Format].html">Text Data Handling in Python</a>
+  </li>
+  <li class="">
+    <a href="Working_with_Sequence_Data[FASTA].html">Introduction to Sequence Data Analysis with Python</a>
+  </li>
+  <li class="">
+    <a href="Working_with_Sequence_Data[FASTQ].html">FASTQ Format Handling</a>
   </li>
   <li class="active">
     <a href="">An Introduction to Data Visualization with Matplotlib</a>
-  </li>
-  <li class="">
-    <a href="DNA_Sequence_Statistics-1.html">DNA Sequence Statistics-1</a>
-  </li>
-  <li class="">
-    <a href="DNA_Sequence_Statistics-2.html">DNA Sequence Statistics-2</a>
   </li>
 </ul>
 </nav>
@@ -307,15 +309,8 @@
         
               <div>
                 
-  <p><img alt="matplotlib" src="docs/../img/logo.png" /></p>
-<div class="section" id="an-introduction-to-data-visualization-with-matplotlib">
+  <div class="section" id="an-introduction-to-data-visualization-with-matplotlib">
 <h1>An Introduction to Data Visualization with Matplotlib<a class="headerlink" href="#an-introduction-to-data-visualization-with-matplotlib" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Official Documentation- https://matplotlib.org/index.html</p></li>
-<li><p>Scipy-2019 Tutorial-https://github.com/story645/mpl_tutorial</p></li>
-<li><p>NBViewer: https://nbviewer.jupyter.org/github/matplotlib/GettingStarted/tree/master/notebooks/</p></li>
-<li><p>Format String: https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html</p></li>
-</ul>
 <div class="section" id="why-is-data-visualization-important">
 <h2>Why is data visualization important?<a class="headerlink" href="#why-is-data-visualization-important" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -345,7 +340,7 @@
 <div class="section" id="anatomy-of-a-figure">
 <h2>Anatomy of a Figure<a class="headerlink" href="#anatomy-of-a-figure" title="Permalink to this headline">¶</a></h2>
 <p>A matplotlib visualization is a figure onto which is attached one or more axes. Each axes has a horizontal (x) axis and vertical (y) axis, and the data is encoded using color and glyphs such as markers (for example circles) or lines or polygons (called patches). The figure below annotates these parts of a visualization and was created by Nicolas P. Rougier using matplotlib. The source code can be found in the <a class="reference external" href="https://matplotlib.org/gallery/showcase/anatomy.html#sphx-glr-gallery-showcase-anatomy-py">matplotlib documentation</a>.
-<img alt="anatomy" src="docs/../img/mpl_anatomy.png" /></p>
+<img alt="anatomy" src="../_images/mpl_anatomy.png" /></p>
 </div>
 <div class="section" id="basic-charts-graphs">
 <h2>Basic Charts / Graphs<a class="headerlink" href="#basic-charts-graphs" title="Permalink to this headline">¶</a></h2>
@@ -762,7 +757,7 @@ https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.plot.html</p>
 <li><p>Histogram: a graphical display of data using bars of different heights.</p></li>
 <li><p>The height of each bar shows how many fall into each range.</p></li>
 <li><p>And you decide what ranges to use!
-<img alt="hist" src="docs/../img/histogram.gif" /></p></li>
+<img alt="hist" src="../_images/histogram.gif" /></p></li>
 </ul>
 </div>
 <div class="section" id="create-histogram">
@@ -927,7 +922,7 @@ https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.plot.html</p>
 <li><p>Bar Graphs are good when your data is in categories (such as “Comedy”, “Drama”, etc).</p></li>
 <li><p>But when you have continuous data (such as a person’s height) then use a Histogram.</p></li>
 <li><p>It is best to leave gaps between the bars of a Bar Graph, so it doesn’t look like a Histogram.
-<img alt="hist" src="docs/../img/bar-chart-vs-histogram.svg" /></p></li>
+<img alt="hist" src="../_images/bar-chart-vs-histogram.svg" /></p></li>
 </ul>
 </div>
 <div class="section" id="pie-chart">
@@ -935,7 +930,7 @@ https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.plot.html</p>
 <ul class="simple">
 <li><p>Pie Chart: a special chart that uses “pie slices” to show relative sizes of data.</p></li>
 <li><p>It is a really good way to show relative sizes: it is easy to see which movie types are most liked, and which are least liked, at a glance.
-<img alt="pie" src="docs/../img/pie-chart-movies.svg" /></p></li>
+<img alt="pie" src="../_images/pie-chart-movies.svg" /></p></li>
 </ul>
 </div>
 <div class="section" id="create-simple-pie-chart">
@@ -1034,6 +1029,10 @@ https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.plot.html</p>
 <li><p>https://realpython.com/python-matplotlib-guide/</p></li>
 <li><p>https://www.youtube.com/playlist?list=PL-osiE80TeTvipOqomVEeZ1HRrcEvtZB_</p></li>
 <li><p>https://www.tutorialspoint.com/matplotlib/index.htm</p></li>
+<li><p>Official Documentation- https://matplotlib.org/index.html</p></li>
+<li><p>Scipy-2019 Tutorial-https://github.com/story645/mpl_tutorial</p></li>
+<li><p>NBViewer: https://nbviewer.jupyter.org/github/matplotlib/GettingStarted/tree/master/notebooks/</p></li>
+<li><p>Format String: https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html</p></li>
 </ul>
 </div>
 </div>
@@ -1047,8 +1046,7 @@ https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.plot.html</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="QuickPython.html" title="previous page">Python Quick Guide</a>
-    <a class='right-next' id="next-link" href="DNA_Sequence_Statistics-1.html" title="next page">DNA Sequence Statistics-1</a>
+    <a class='left-prev' id="prev-link" href="Working_with_Sequence_Data[FASTQ].html" title="previous page"><code class="docutils literal notranslate"><span class="pre">FASTQ</span></code> Format Handling</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
