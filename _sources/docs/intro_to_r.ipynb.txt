@@ -1,6 +1,168 @@
 {
- "cells": [],
- "metadata": {},
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Introduction to R "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<table>\n",
+       "<caption>A tibble: 6 × 11</caption>\n",
+       "<thead>\n",
+       "\t<tr><th scope=col>manufacturer</th><th scope=col>model</th><th scope=col>displ</th><th scope=col>year</th><th scope=col>cyl</th><th scope=col>trans</th><th scope=col>drv</th><th scope=col>cty</th><th scope=col>hwy</th><th scope=col>fl</th><th scope=col>class</th></tr>\n",
+       "\t<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>\n",
+       "</thead>\n",
+       "<tbody>\n",
+       "\t<tr><td>audi</td><td>a4</td><td>1.8</td><td>1999</td><td>4</td><td>auto(l5)  </td><td>f</td><td>18</td><td>29</td><td>p</td><td>compact</td></tr>\n",
+       "\t<tr><td>audi</td><td>a4</td><td>1.8</td><td>1999</td><td>4</td><td>manual(m5)</td><td>f</td><td>21</td><td>29</td><td>p</td><td>compact</td></tr>\n",
+       "\t<tr><td>audi</td><td>a4</td><td>2.0</td><td>2008</td><td>4</td><td>manual(m6)</td><td>f</td><td>20</td><td>31</td><td>p</td><td>compact</td></tr>\n",
+       "\t<tr><td>audi</td><td>a4</td><td>2.0</td><td>2008</td><td>4</td><td>auto(av)  </td><td>f</td><td>21</td><td>30</td><td>p</td><td>compact</td></tr>\n",
+       "\t<tr><td>audi</td><td>a4</td><td>2.8</td><td>1999</td><td>6</td><td>auto(l5)  </td><td>f</td><td>16</td><td>26</td><td>p</td><td>compact</td></tr>\n",
+       "\t<tr><td>audi</td><td>a4</td><td>2.8</td><td>1999</td><td>6</td><td>manual(m5)</td><td>f</td><td>18</td><td>26</td><td>p</td><td>compact</td></tr>\n",
+       "</tbody>\n",
+       "</table>\n"
+      ],
+      "text/latex": [
+       "A tibble: 6 × 11\n",
+       "\\begin{tabular}{lllllllllll}\n",
+       " manufacturer & model & displ & year & cyl & trans & drv & cty & hwy & fl & class\\\\\n",
+       " <chr> & <chr> & <dbl> & <int> & <int> & <chr> & <chr> & <int> & <int> & <chr> & <chr>\\\\\n",
+       "\\hline\n",
+       "\t audi & a4 & 1.8 & 1999 & 4 & auto(l5)   & f & 18 & 29 & p & compact\\\\\n",
+       "\t audi & a4 & 1.8 & 1999 & 4 & manual(m5) & f & 21 & 29 & p & compact\\\\\n",
+       "\t audi & a4 & 2.0 & 2008 & 4 & manual(m6) & f & 20 & 31 & p & compact\\\\\n",
+       "\t audi & a4 & 2.0 & 2008 & 4 & auto(av)   & f & 21 & 30 & p & compact\\\\\n",
+       "\t audi & a4 & 2.8 & 1999 & 6 & auto(l5)   & f & 16 & 26 & p & compact\\\\\n",
+       "\t audi & a4 & 2.8 & 1999 & 6 & manual(m5) & f & 18 & 26 & p & compact\\\\\n",
+       "\\end{tabular}\n"
+      ],
+      "text/markdown": [
+       "\n",
+       "A tibble: 6 × 11\n",
+       "\n",
+       "| manufacturer &lt;chr&gt; | model &lt;chr&gt; | displ &lt;dbl&gt; | year &lt;int&gt; | cyl &lt;int&gt; | trans &lt;chr&gt; | drv &lt;chr&gt; | cty &lt;int&gt; | hwy &lt;int&gt; | fl &lt;chr&gt; | class &lt;chr&gt; |\n",
+       "|---|---|---|---|---|---|---|---|---|---|---|\n",
+       "| audi | a4 | 1.8 | 1999 | 4 | auto(l5)   | f | 18 | 29 | p | compact |\n",
+       "| audi | a4 | 1.8 | 1999 | 4 | manual(m5) | f | 21 | 29 | p | compact |\n",
+       "| audi | a4 | 2.0 | 2008 | 4 | manual(m6) | f | 20 | 31 | p | compact |\n",
+       "| audi | a4 | 2.0 | 2008 | 4 | auto(av)   | f | 21 | 30 | p | compact |\n",
+       "| audi | a4 | 2.8 | 1999 | 6 | auto(l5)   | f | 16 | 26 | p | compact |\n",
+       "| audi | a4 | 2.8 | 1999 | 6 | manual(m5) | f | 18 | 26 | p | compact |\n",
+       "\n"
+      ],
+      "text/plain": [
+       "  manufacturer model displ year cyl trans      drv cty hwy fl class  \n",
+       "1 audi         a4    1.8   1999 4   auto(l5)   f   18  29  p  compact\n",
+       "2 audi         a4    1.8   1999 4   manual(m5) f   21  29  p  compact\n",
+       "3 audi         a4    2.0   2008 4   manual(m6) f   20  31  p  compact\n",
+       "4 audi         a4    2.0   2008 4   auto(av)   f   21  30  p  compact\n",
+       "5 audi         a4    2.8   1999 6   auto(l5)   f   16  26  p  compact\n",
+       "6 audi         a4    2.8   1999 6   manual(m5) f   18  26  p  compact"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "library(ggplot2)\n",
+    "data(mpg)\n",
+    "head(mpg)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAB9VBMVEUAAAABAQECAgIDAwME\nBAQICAgMDAwODg4QEBAUFBQVFRUeHh4hISEkJCQmJiYsLCwtLS0yMjIzMzM0NDQ4ODg5OTk7\nOzs/Pz9AQEBBQUFDQ0NERERFRUVLS0tNTU1OTk5PT09QUFBRUVFSUlJTU1NVVVVWVlZXV1dZ\nWVlaWlpbW1tcXFxeXl5fX19hYWFiYmJjY2NkZGRlZWVmZmZoaGhpaWlqampra2tsbGxtbW1u\nbm5vb29wcHBzc3N0dHR1dXV2dnZ3d3d4eHh6enp7e3t9fX1+fn5/f3+AgICBgYGDg4OEhISF\nhYWGhoaIiIiJiYmKioqMjIyNjY2Pj4+QkJCTk5OVlZWWlpaXl5eYmJiZmZmampqbm5ucnJyd\nnZ2enp6fn5+goKChoaGioqKkpKSmpqaoqKiqqqqsrKytra2urq6ysrKzs7O0tLS2tra3t7e4\nuLi6urq7u7u8vLy9vb2+vr7BwcHCwsLDw8PFxcXGxsbHx8fIyMjJycnKysrLy8vMzMzNzc3P\nz8/Q0NDR0dHT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vf39/h4eHi4uLj4+Pk5OTl5eXn\n5+fp6enr6+vu7u7w8PDx8fHy8vL09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7/\n///vbDYvAAAACXBIWXMAABJ0AAASdAHeZh94AAASiUlEQVR4nO3b6bPkd1mH4cOmuIAaUXHh\nBMSwZKIgIIIIohhBwJVNRAUjAoqKO7LEgIiyZFwICSSEGJJJ/51OMhSl4FhF0VX39Geu60X/\nfud7qk4958Vd/XRX99kB+Jad1QPAAiHBEQgJjkBIcARCgiMQEhyBkOAIhARHcKSQvkDl/kv3\n1SNcv7547JDuoXL/4d56hOvXF4Q0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLS\nDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuE\nFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJI\nSDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHt\nEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENI\nISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWE\ntENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIO\nIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QU\nEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhI\nO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0Q\nUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0gh\nIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0\nQ0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4h\nhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS\n0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7\nhBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBS\nSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh\n7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRD\nSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGF\nhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLS\nDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuE\n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\nFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJI\nSDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHt\nEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENI\nISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWE\ntENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIO\nIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QU\nEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhI\nO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0Q\nUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0gh\nIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0\nQ0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4h\nhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS\n0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBSSEg7\nhBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh7RBS\nSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRDSCEh\n7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGFhLRD\nSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLSDiGF\nhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuEFBLS\nDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJISDuE\nFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHtEFJI\nSDuEFBLSDiGFhLRDSCEh7RBSSEg7hBQS0g4hhYS0Q0ghIe0QUkhIO4QUEtIOIYWEtENIISHt\nEFJISDuEFBLSDiGFhLRDSCEh7RBS6Oghkbnth2+vR0BIp+93b/hQPQJCOn1CuiYI6dQJ6Zog\npFP3N7/42XoEhARHISQ4AiHBEQhpxKXzi/UI1zUhjRBSS0gjhNQS0un64m/cfMs7Hvr911y+\nfc9LhdQS0sl65OWv+/TfXXj3p5957+HwsvcKqSWkk3XHTV86HD7wpkd+8q8P/37j3UJqCelk\nve+VV65v/9XDu1/tNVJMSCfrPa++cv3ks7/84r8QUkxIJ+tDz33gcPj7Ww+PXHjns+4TUkxI\nJ+vhF7/h4kde+I7D4a3PfL23v2tCOl33vOF5t7zjwcPhE+cfFFJNSKfv9uc8WI+AkE7dpft/\n6S31DAjp5H32/AX31jMgpJP3yF2X6hEQEhyFkOAIhARHICQ4AiHBEQgJjkBIcARCgiMQEhyB\nkOAIhHTS7njCo983f+Pj/6Ee5LonpNP26id8/HDnk36+HgMhnbYHnvp9Dz39KffXYyCkE/fB\nx/2Qxe4aIKRT99Kzn61HQEin7xlnP/hIPQNCOnV/ePZzZ2+rh0BIJ+6uJ184POvbP1ePgZBO\n2zO+457Df37bjfUYCOmk3Xb2R5cf33z23nqQ656Q4AiEBEcgJDgCIcERCAmOQEhwBEKCIxAS\nHIGQ4AiEBEcgJDgCIcERCAmOQEhwBP8NoNLmElLXH5AAAAAASUVORK5CYII=",
+      "text/plain": [
+       "plot without title"
+      ]
+     },
+     "metadata": {
+      "image/png": {
+       "height": 420,
+       "width": 420
+      },
+      "text/plain": {
+       "height": 420,
+       "width": 420
+      }
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "ggplot(mpg, aes(x='cyl', y='displ', fill='clas')) +\n",
+    "    geom_line() "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "R",
+   "language": "R",
+   "name": "ir"
+  },
+  "language_info": {
+   "codemirror_mode": "r",
+   "file_extension": ".r",
+   "mimetype": "text/x-r-source",
+   "name": "R",
+   "pygments_lexer": "r",
+   "version": "3.6.1"
+  },
+  "latex_envs": {
+   "LaTeX_envs_menu_present": true,
+   "autoclose": false,
+   "autocomplete": true,
+   "bibliofile": "biblio.bib",
+   "cite_by": "apalike",
+   "current_citInitial": 1,
+   "eqLabelWithNumbers": true,
+   "eqNumInitial": 1,
+   "hotkeys": {
+    "equation": "Ctrl-E",
+    "itemize": "Ctrl-I"
+   },
+   "labels_anchors": false,
+   "latex_user_defs": false,
+   "report_style_numbering": false,
+   "user_envs_cfg": false
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": false
+  }
+ },
  "nbformat": 4,
  "nbformat_minor": 4
 }
